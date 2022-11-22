@@ -22,7 +22,7 @@ require "user.lsp"
 require "user.dap"
 
 if vim.g.neovide then
-    vim.o.guifont = "JetBrains Mono:h11.0"
+    vim.o.guifont = "JetBrains Mono:h10.0"
     vim.g.noevide_scale_factor = 1
     vim.g.neovide_refresh_rate = 60
     vim.g.neovide_hide_mouse_when_typing = true
