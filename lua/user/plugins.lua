@@ -59,6 +59,7 @@ return packer.startup(function(use)
   use "lewis6991/impatient.nvim"
   use "lukas-reineke/indent-blankline.nvim"
   use "goolord/alpha-nvim"
+    use "max397574/better-escape.nvim"
 
   -- use "simrat39/symbols-outline.nvim"
 
