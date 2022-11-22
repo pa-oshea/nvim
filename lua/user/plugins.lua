@@ -60,6 +60,8 @@ return packer.startup(function(use)
   use "lukas-reineke/indent-blankline.nvim"
   use "goolord/alpha-nvim"
 
+  -- use "simrat39/symbols-outline.nvim"
+
   -- Colorschemes
   use "folke/tokyonight.nvim"
   use "lunarvim/darkplus.nvim"
