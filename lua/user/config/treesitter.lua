@@ -1,10 +1,10 @@
-local status_ok, treesitter = pcall(require, "nvim-treesitter")
+local status_ok, _ = pcall(require, "nvim-treesitter")
 if not status_ok then
 	return
 end
 
-local status_ok, configs = pcall(require, "nvim-treesitter.configs")
-if not status_ok then
+local status_ok_ts, configs = pcall(require, "nvim-treesitter.configs")
+if not status_ok_ts then
 	return
 end
 
