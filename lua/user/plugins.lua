@@ -64,6 +64,7 @@ return packer.startup(function(use)
 	use("max397574/better-escape.nvim")
 	use("sitiom/nvim-numbertoggle")
     use("rcarriga/nvim-notify")
+    use("stevearc/dressing.nvim")
 
 	-- use "simrat39/symbols-outline.nvim"
 

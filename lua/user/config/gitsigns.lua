@@ -9,6 +9,7 @@ gitsigns.setup({
 		changedelete = { hl = "GitSignsChange", text = "▎", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
 	},
 	signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
+    numhl = true,
 	watch_gitdir = {
 		interval = 1000,
 		follow_files = true,
