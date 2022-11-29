@@ -8,3 +8,4 @@ require(... .. ".handlers").setup()
 require(... .. ".null-ls")
 
 require("lsp_signature").setup()
+require("trouble").setup()

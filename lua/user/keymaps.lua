@@ -63,6 +63,14 @@ km.xkeymap(
 	"Comment block"
 )
 
+-- Trouble
+km.wk.register({["<leader>x"] = { name = "Trouble"}}, {mode = "n"})
+km.nkeymap("<leader>xx", "<cmd>TroubleToggle<cr>", "Trouble toggle")
+km.nkeymap("<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", "Trouble workspace diagnostics")
+km.nkeymap("<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", "Trouble document diagnostics")
+km.nkeymap("<leader>xl", "<cmd>TroubleToggle loclist<cr>", "Trouble loclist")
+km.nkeymap("<leader>xq", "<cmd>TroubleToggle quickfix<cr>", "Trouble quickfix")
+
 -- DAP
 km.wk.register({ ["<leader>d"] = { name = "Dap" } }, { mode = "n" })
 km.nkeymap("<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle break point")
