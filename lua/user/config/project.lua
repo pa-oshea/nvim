@@ -1,7 +1,5 @@
-local status_ok, project = pcall(require, "project_nvim")
-if not status_ok then
-	return
-end
+local project = require("project_nvim")
+
 project.setup({
 
 	-- detection_methods = { "lsp", "pattern" }, -- NOTE: lsp detection will get annoying with multiple langs in one project
@@ -11,9 +9,6 @@ project.setup({
 	patterns = { ".git", "Makefile", "package.json" },
 })
 
-local tele_status_ok, telescope = pcall(require, "telescope")
-if not tele_status_ok then
-	return
-end
+local telescope = require("telescope")
 
 telescope.load_extension("projects")

@@ -1,12 +1,5 @@
-local status_ok, surround = pcall(require, "surround")
-if not status_ok then
-	return
-end
-
-local ok, wk = pcall(require, "which-key")
-if not ok then
-	return
-end
+local surround = require("mini.surround")
+local wk = require("which-key")
 
 surround.setup({
 	custom_surroundings = nil,
