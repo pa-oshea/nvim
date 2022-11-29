@@ -33,25 +33,38 @@ km.vkeymap("<", "<gv")
 km.vkeymap(">", ">gv")
 
 -- Plugins --
+-- Telescope
+km.wk.register({ ["<leader>f"] = { name = " Telescope" } }, { mode = "n" })
+km.nkeymap("<leader>ff", "<cmd>Telescope find_files<cr>", "Find file")
+km.nkeymap("<leader>fb", "<cmd>Telescope buffers<cr>", "Browse buffers")
+km.nkeymap("<leader>fg", "<cmd>Telescope live_grep<cr>", "Live grep")
+km.nkeymap("<leader>fp", "<cmd>Telescope projects<cr>", "Browse projects")
+km.nkeymap("<leader>fr", "<cmd>Telescope lsp_references<cr>", "Browse references")
 
 -- NvimTree
 km.nkeymap("<leader>e", ":NvimTreeToggle<CR>", "Open nvim tree")
 
 -- Git
-km.wk.register({ ['<leader>g'] = { name = ' Git' } }, { mode = 'n' })
-km.nkeymap('<leader>gb', '<cmd>Gitsigns blame_line<cr>', ' Blame line')
-km.nkeymap('<leader>g]', '<cmd>Gitsigns next_hunk<cr>', ' Next hunk')
-km.nkeymap('<leader>g[', '<cmd>Gitsigns prev_hunk<cr>', ' Prev hunk')
-km.nkeymap('<leader>g?', '<cmd>Gitsigns preview_hunk<cr>', ' Preview changes')
--- Toggle term 
+km.wk.register({ ["<leader>g"] = { name = " Git" } }, { mode = "n" })
+km.nkeymap("<leader>gb", "<cmd>Gitsigns blame_line<cr>", " Blame line")
+km.nkeymap("<leader>g]", "<cmd>Gitsigns next_hunk<cr>", " Next hunk")
+km.nkeymap("<leader>g[", "<cmd>Gitsigns prev_hunk<cr>", " Prev hunk")
+km.nkeymap("<leader>g?", "<cmd>Gitsigns preview_hunk<cr>", " Preview changes")
+
+-- Toggle term
 km.nkeymap("<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Open lazygit")
 km.nkeymap("<leader>bb", "<cmd>lua _BPYTOP_TOGGLE()<CR>", "Open bpytop")
 
 -- Comment
 km.nkeymap("<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", "Comment line")
-km.xkeymap("<leader>/", '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', "Comment block")
+km.xkeymap(
+	"<leader>/",
+	'<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>',
+	"Comment block"
+)
 
 -- DAP
+km.wk.register({ ["<leader>d"] = { name = "Dap" } }, { mode = "n" })
 km.nkeymap("<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle break point")
 km.nkeymap("<leader>dc", "<cmd>lua require'dap'.continue()<cr>", "Continue")
 km.nkeymap("<leader>di", "<cmd>lua require'dap'.step_into()<cr>", "Step into")

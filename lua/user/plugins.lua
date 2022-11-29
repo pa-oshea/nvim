@@ -63,8 +63,16 @@ return packer.startup(function(use)
 	use("goolord/alpha-nvim")
 	use("max397574/better-escape.nvim")
 	use("sitiom/nvim-numbertoggle")
-    use("rcarriga/nvim-notify")
-    use("stevearc/dressing.nvim")
+	use("rcarriga/nvim-notify")
+	use("stevearc/dressing.nvim")
+	use({
+		"kevinhwang91/nvim-ufo",
+		requires = {
+			"kevinhwang91/promise-async",
+		},
+	})
+    use("SmiteshP/nvim-navic")
+    use("onsails/lspkind-nvim")
 
 	-- use "simrat39/symbols-outline.nvim"
 

@@ -5,7 +5,7 @@ surround.setup({
 	custom_surroundings = nil,
 	highlight_duration = 500,
 	mappings = {
-		add = "S",
+		add = "<space>S",
 		delete = "<space>Sd",
 		find = "<space>Sf",
 		find_left = "<space>SF",
