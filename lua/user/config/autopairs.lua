@@ -1,5 +1,5 @@
 -- Setup nvim-cmp.
-local npairs = require("nvim-autopair")
+local npairs = require("nvim-autopairs")
 
 npairs.setup({
 	check_ts = true, -- treesitter integration
