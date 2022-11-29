@@ -21,7 +21,7 @@ null_ls.setup({
 		formatting.stylua,
 		formatting.gofmt,
 		formatting.google_java_format,
-        code_actions.eslint,
+		code_actions.eslint,
 		diagnostics.flake8,
 	},
 })

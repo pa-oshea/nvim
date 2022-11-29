@@ -48,6 +48,7 @@ return packer.startup(function(use)
 	use("nvim-lua/popup.nvim")
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used by lots of plugins
 	use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
+	use("echasnovski/mini.surround") -- Surround text with delimiters such as brackets and quotes
 	use("numToStr/Comment.nvim")
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 	use("kyazdani42/nvim-web-devicons")
@@ -61,6 +62,7 @@ return packer.startup(function(use)
 	use("lukas-reineke/indent-blankline.nvim")
 	use("goolord/alpha-nvim")
 	use("max397574/better-escape.nvim")
+	use("sitiom/nvim-numbertoggle")
 
 	-- use "simrat39/symbols-outline.nvim"
 
@@ -102,6 +104,9 @@ return packer.startup(function(use)
 	use("mfussenegger/nvim-dap")
 	use("rcarriga/nvim-dap-ui")
 	use("ravenxrz/DAPInstall.nvim")
+
+	-- which key
+	use("folke/which-key.nvim")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

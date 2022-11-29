@@ -1,7 +1,7 @@
 local servers = {
 	"sumneko_lua",
 	"cssls",
-    "gopls",
+	"gopls",
 	"html",
 	"tsserver",
 	"pyright",
