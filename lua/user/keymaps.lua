@@ -1,74 +1,63 @@
--- Shorten function name
-local keymap = vim.keymap.set
--- Silent keymap option
-local opts = { silent = true }
-
+local km = require("user.utils.keymapper")
 --Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
+km.keymap("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
--- Modes
---   normal_mode = "n",
---   insert_mode = "i",
---   visual_mode = "v",
---   visual_block_mode = "x",
---   term_mode = "t",
---   command_mode = "c",
-
--- Normal --
--- Better window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+km.nkeymap("<leader>A", "<cmd>Alpha<cr>", " Open alpha")
 
 -- Resize with arrows
-keymap("n", "<C-Up>", ":resize -2<CR>", opts)
-keymap("n", "<C-Down>", ":resize +2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+km.nkeymap("<C-Up>", ":resize -2<CR>", "Resize up")
+km.nkeymap("<C-Down>", ":resize +2<CR>", "Resize down")
+km.nkeymap("<C-Left>", ":vertical resize -2<CR>", "Resize left")
+km.nkeymap("<C-Right>", ":vertical resize +2<CR>", "Resize right")
 
 -- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
-
--- Clear highlights
-keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
-
+km.nkeymap("<leader>bl", ":bnext<CR>", "Next buffer")
+km.nkeymap("<leader>bh", ":bprevious<CR>", "Previous buffer")
 -- Close buffers
-keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
+km.nkeymap("<leader>bq", "<cmd>Bdelete!<CR>", "Remove buffer")
+
+-- Clear highlights TODO maybe remove this
+km.nkeymap("<leader>h", "<cmd>nohlsearch<CR>", "Clear highlight")
 
 -- Save
-keymap("n", "<C-s>", ":w<CR>")
+km.nkeymap("<C-s>", ":w<CR>", "Save buffer")
 
 -- Better paste
-keymap("v", "p", '"_dP', opts)
+km.vkeymap("p", '"_dP')
 
 -- Visual --
 -- Stay in indent mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
+km.vkeymap("<", "<gv")
+km.vkeymap(">", ">gv")
 
 -- Plugins --
 
 -- NvimTree
-keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+km.nkeymap("<leader>e", ":NvimTreeToggle<CR>", "Open nvim tree")
 
 -- Git
-keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
-keymap("n", "<leader>bb", "<cmd>lua _BPYTOP_TOGGLE()<CR>", opts)
+km.wk.register({ ['<leader>g'] = { name = ' Git' } }, { mode = 'n' })
+km.nkeymap('<leader>gb', '<cmd>Gitsigns blame_line<cr>', ' Blame line')
+km.nkeymap('<leader>g]', '<cmd>Gitsigns next_hunk<cr>', ' Next hunk')
+km.nkeymap('<leader>g[', '<cmd>Gitsigns prev_hunk<cr>', ' Prev hunk')
+km.nkeymap('<leader>g?', '<cmd>Gitsigns preview_hunk<cr>', ' Preview changes')
+-- Toggle term 
+km.nkeymap("<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Open lazygit")
+km.nkeymap("<leader>bb", "<cmd>lua _BPYTOP_TOGGLE()<CR>", "Open bpytop")
 
 -- Comment
-keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
-keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>')
+km.nkeymap("<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", "Comment line")
+km.xkeymap("<leader>/", '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', "Comment block")
 
 -- DAP
-keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
-keymap("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", opts)
-keymap("n", "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", opts)
-keymap("n", "<leader>do", "<cmd>lua require'dap'.step_over()<cr>", opts)
-keymap("n", "<leader>dO", "<cmd>lua require'dap'.step_out()<cr>", opts)
-keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
-keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
-keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
-keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
+km.nkeymap("<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle break point")
+km.nkeymap("<leader>dc", "<cmd>lua require'dap'.continue()<cr>", "Continue")
+km.nkeymap("<leader>di", "<cmd>lua require'dap'.step_into()<cr>", "Step into")
+km.nkeymap("<leader>do", "<cmd>lua require'dap'.step_over()<cr>", "Step over")
+km.nkeymap("<leader>dO", "<cmd>lua require'dap'.step_out()<cr>", "Step out")
+km.nkeymap("<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", "Repl toggle")
+km.nkeymap("<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", "Run last")
+km.nkeymap("<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", "Dap ui toggle")
+km.nkeymap("<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", "Terminate")
