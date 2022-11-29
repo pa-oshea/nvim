@@ -6,3 +6,5 @@ end
 require(... .. ".mason")
 require(... .. ".handlers").setup()
 require(... .. ".null-ls")
+
+require("lsp_signature").setup()
