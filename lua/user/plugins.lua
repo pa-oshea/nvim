@@ -86,6 +86,7 @@ return packer.startup(function(use)
 	use("folke/trouble.nvim")
 	use("j-hui/fidget.nvim")
 	use("glepnir/lspsaga.nvim")
+	use("folke/neodev.nvim", { module = "neodev" })
 
 	-- UI / interface
 	use("RRethy/vim-illuminate")
@@ -98,8 +99,8 @@ return packer.startup(function(use)
 	use("akinsho/bufferline.nvim")
 	use("folke/lsp-colors.nvim")
 	use("simrat39/symbols-outline.nvim")
-    use("mrjones2014/smart-splits.nvim")
-    use("SmiteshP/nvim-navic")
+	use("mrjones2014/smart-splits.nvim")
+	use("SmiteshP/nvim-navic")
 	-- ariel
 
 	-- Telescope
@@ -124,8 +125,8 @@ return packer.startup(function(use)
 	-- which key
 	use("folke/which-key.nvim")
 
-    -- Shortcuts
-    use("famiu/bufdelete.nvim")
+	-- Shortcuts
+	use("famiu/bufdelete.nvim")
 	use("echasnovski/mini.surround") -- Surround text with delimiters such as brackets and quotes
 	use("numToStr/Comment.nvim")
 	use("JoosepAlviste/nvim-ts-context-commentstring")

@@ -26,6 +26,7 @@ vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 
+require("neodev").setup()
 require("ufo").setup()
 require("better_escape").setup()
 require("numbertoggle").setup()

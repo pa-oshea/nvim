@@ -3,12 +3,15 @@ local actions = require("telescope.actions")
 
 telescope.setup({
 	defaults = {
-
 		prompt_prefix = " ",
 		selection_caret = " ",
 		path_display = { "smart" },
 		file_ignore_patterns = { ".git/", "node_modules" },
-
+		sorting_strategy = "ascending",
+		layout_config = {
+			mirror = false,
+			prompt_position = "top",
+		},
 		mappings = {
 			i = {
 				["<Down>"] = actions.cycle_history_next,
@@ -18,6 +21,14 @@ telescope.setup({
 			},
 		},
 	},
+	-- pickers = {
+	-- 	find_files = {
+	-- 		theme = "ivy",
+	--            layout_config = {
+	--                height = 50
+	--            }
+	-- 	},
+	-- },
 	extensions = {
 		["ui-select"] = {
 			require("telescope.themes").get_dropdown({}),
