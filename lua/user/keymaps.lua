@@ -6,6 +6,12 @@ vim.g.maplocalleader = " "
 
 km.nkeymap("<leader>A", "<cmd>Alpha<cr>", " Open alpha")
 
+-- Better buffer movements
+km.nkeymap("<C-h>", "<C-w>h", "Move to left window")
+km.nkeymap("<C-j>", "<C-w>j", "Move to right window")
+km.nkeymap("<C-k>", "<C-w>k", "Move to up window")
+km.nkeymap("<C-l>", "<C-w>l", "Move to right window")
+
 -- Resize with arrows
 km.nkeymap("<C-Up>", ":resize -2<CR>", "Resize up")
 km.nkeymap("<C-Down>", ":resize +2<CR>", "Resize down")
@@ -13,10 +19,10 @@ km.nkeymap("<C-Left>", ":vertical resize -2<CR>", "Resize left")
 km.nkeymap("<C-Right>", ":vertical resize +2<CR>", "Resize right")
 
 -- Navigate buffers
-km.nkeymap("<leader>bl", ":bnext<CR>", "Next buffer")
-km.nkeymap("<leader>bh", ":bprevious<CR>", "Previous buffer")
+km.nkeymap("<S-l>", ":bnext<CR>", "Next buffer")
+km.nkeymap("<S-h>", ":bprevious<CR>", "Previous buffer")
 -- Close buffers
-km.nkeymap("<leader>bq", "<cmd>Bdelete!<CR>", "Remove buffer")
+km.nkeymap("<leader>bq", "<cmd>Bdelete<CR>", "Remove buffer")
 
 -- Clear highlights TODO maybe remove this
 km.nkeymap("<leader>h", "<cmd>nohlsearch<CR>", "Clear highlight")
@@ -50,10 +56,21 @@ km.nkeymap("<leader>gb", "<cmd>Gitsigns blame_line<cr>", " Blame line")
 km.nkeymap("<leader>g]", "<cmd>Gitsigns next_hunk<cr>", " Next hunk")
 km.nkeymap("<leader>g[", "<cmd>Gitsigns prev_hunk<cr>", " Prev hunk")
 km.nkeymap("<leader>g?", "<cmd>Gitsigns preview_hunk<cr>", " Preview changes")
+km.nkeymap("<leader>go", "<cmd>DiffviewOpen<cr>", "Open diff view")
+km.nkeymap("<leader>gc", "<cmd>DiffviewClose<cr>", "Close diff view")
+km.nkeymap("<leader>gr", "<cmd>DiffviewRefresh<cr>", "Refresh diff view")
+km.nkeymap("<leader>g0", "<cmd>DiffviewOpen HEAD<cr>", "Open diff view HEAD")
+km.nkeymap("<leader>g1", "<cmd>DiffviewOpen HEAD^<cr>", "Open diff view HEAD^")
+km.nkeymap("<leader>g2", "<cmd>DiffviewOpen HEAD^^<cr>", "Open diff view HEAD^^")
+km.nkeymap("<leader>g3", "<cmd>DiffviewOpen HEAD^^^<cr>", "Open diff view HEAD^^^")
+km.nkeymap("<leader>g4", "<cmd>DiffviewOpen HEAD^^^^<cr>", "Open diff view HEAD^^^^")
 
 -- Toggle term
 km.nkeymap("<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Open lazygit")
 km.nkeymap("<leader>bb", "<cmd>lua _BPYTOP_TOGGLE()<CR>", "Open bpytop")
+
+-- Symbols outline
+km.nkeymap("<leader>o", "<cmd>SymbolsOutline<cr>", "Toggle symbol outline")
 
 -- Comment
 km.nkeymap("<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", "Comment line")
@@ -63,8 +80,13 @@ km.xkeymap(
 	"Comment block"
 )
 
+-- Terminal
+km.wk.register({ ["<leader>\\"] = { name = " Term Split" } })
+km.nkeymap("<leader>\\v", "<cmd>vs<cr><cmd>terminal<cr>", "ﲖ Vertical")
+km.nkeymap("<leader>\\h", "<cmd>sp<cr><cmd>terminal<cr>", "ﲐ Horizontal")
+
 -- Trouble
-km.wk.register({["<leader>x"] = { name = "Trouble"}}, {mode = "n"})
+km.wk.register({ ["<leader>x"] = { name = "Trouble" } }, { mode = "n" })
 km.nkeymap("<leader>xx", "<cmd>TroubleToggle<cr>", "Trouble toggle")
 km.nkeymap("<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", "Trouble workspace diagnostics")
 km.nkeymap("<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", "Trouble document diagnostics")

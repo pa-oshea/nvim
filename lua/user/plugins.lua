@@ -51,34 +51,19 @@ return packer.startup(function(use)
 	use("echasnovski/mini.surround") -- Surround text with delimiters such as brackets and quotes
 	use("numToStr/Comment.nvim")
 	use("JoosepAlviste/nvim-ts-context-commentstring")
-	use("kyazdani42/nvim-web-devicons")
-	use("kyazdani42/nvim-tree.lua")
-	use("akinsho/bufferline.nvim")
 	use("moll/vim-bbye")
 	use("nvim-lualine/lualine.nvim")
 	use("akinsho/toggleterm.nvim")
 	use("ahmedkhalf/project.nvim")
 	use("lewis6991/impatient.nvim")
-	use("lukas-reineke/indent-blankline.nvim")
-	use("goolord/alpha-nvim")
 	use("max397574/better-escape.nvim")
 	use("sitiom/nvim-numbertoggle")
-	use("rcarriga/nvim-notify")
-	use("stevearc/dressing.nvim")
-	use({
-		"kevinhwang91/nvim-ufo",
-		requires = {
-			"kevinhwang91/promise-async",
-		},
-	})
-    use("SmiteshP/nvim-navic")
-    use("onsails/lspkind-nvim")
-
-	-- use "simrat39/symbols-outline.nvim"
+	use("kevinhwang91/nvim-ufo")
+	use("kevinhwang91/promise-async")
+	use("onsails/lspkind-nvim")
 
 	-- Colorschemes
 	use("folke/tokyonight.nvim")
-	use("lunarvim/darkplus.nvim")
 
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
@@ -87,9 +72,9 @@ return packer.startup(function(use)
 	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-nvim-lua")
-    use("hrsh7th/cmp-calc")
-    use("hrsh7th/cmp-emoji")
-    use("chrisgrieser/cmp-nerdfont")
+	use("hrsh7th/cmp-calc")
+	use("hrsh7th/cmp-emoji")
+	use("chrisgrieser/cmp-nerdfont")
 
 	-- snippets
 	use("L3MON4D3/LuaSnip") --snippet engine
@@ -100,10 +85,23 @@ return packer.startup(function(use)
 	use("williamboman/mason.nvim")
 	use("williamboman/mason-lspconfig.nvim")
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
-    use("ray-x/lsp_signature.nvim")
-    use("folke/trouble.nvim")
-	-- use "jayp0521/mason-null-ls.nvim"
+	use("ray-x/lsp_signature.nvim")
+	use("folke/trouble.nvim")
+	use("j-hui/fidget.nvim")
+	use("glepnir/lspsaga.nvim")
+
+	-- UI / interface
 	use("RRethy/vim-illuminate")
+	use("lukas-reineke/indent-blankline.nvim")
+	use("goolord/alpha-nvim")
+	use("rcarriga/nvim-notify")
+	use("stevearc/dressing.nvim")
+	use("kyazdani42/nvim-web-devicons")
+	use("kyazdani42/nvim-tree.lua")
+	use("akinsho/bufferline.nvim")
+	use("folke/lsp-colors.nvim")
+	use("simrat39/symbols-outline.nvim")
+	-- ariel
 
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
@@ -111,10 +109,13 @@ return packer.startup(function(use)
 	-- use "nvim-telescope/telescope-media-files.nvim"
 
 	-- Treesitter
-	use("nvim-treesitter/nvim-treesitter")
+	use("nvim-treesitter/nvim-treesitter", {
+		run = ":TSUpdate",
+	})
 
 	-- Git
 	use("lewis6991/gitsigns.nvim")
+	use("sindrets/diffview.nvim")
 
 	-- DAP
 	use("mfussenegger/nvim-dap")

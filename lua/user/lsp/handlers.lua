@@ -4,6 +4,11 @@ local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
+-- ufo folding
+M.capabilities.textDocument.foldingRange = {
+	dynamicRegistration = false,
+	lineFoldingOnly = true,
+}
 M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
 
 M.setup = function()
@@ -20,7 +25,7 @@ M.setup = function()
 	end
 
 	local config = {
-		virtual_text = false, -- disable virtual text
+		virtual_text = true, -- disable virtual text
 		signs = {
 			active = signs, -- show signs
 		},
@@ -49,23 +54,28 @@ M.setup = function()
 end
 
 local function lsp_keymaps(bufnr)
-	local opts = { noremap = true, silent = true }
-	local keymap = vim.api.nvim_buf_set_keymap
-	keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-	keymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
-	keymap(bufnr, "n", "<leader>li", "<cmd>LspInfo<cr>", opts)
-	keymap(bufnr, "n", "<leader>lI", "<cmd>LspInstallInfo<cr>", opts)
-	keymap(bufnr, "n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-	keymap(bufnr, "n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts)
-	keymap(bufnr, "n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts)
-	keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-	keymap(bufnr, "n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-	keymap(bufnr, "n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
+	local km = require("user.utils.keymapper")
+	local bm = km.create_bufkeymapper(bufnr)
+	-- bm.nkeymap("gD", function()
+	-- 	vim.cmd("tab split")
+	-- 	vim.lsp.buf.declaration()
+	-- end, "Declaration")
+	bm.nkeymap("gd", "<cmd>Lspsaga lsp_finder<cr>", "Definition")
+	bm.nkeymap("K", vim.lsp.buf.hover, "Lsp hover")
+	bm.nkeymap("gI", vim.lsp.buf.implementation, "Implementation")
+	-- bm.nkeymap("gr", vim.lsp.buf.references, "References")
+	bm.nkeymap("gl", vim.diagnostic.open_float, "Open diagnostic float")
+	km.wk.register({ ["<leader>l"] = { name = "Lsp" } }, { mode = "n", buffer = bufnr })
+	bm.nkeymap("<leader>lf", function()
+		vim.lsp.buf.format({ async = true })
+	end, "Format buffer")
+	bm.nkeymap("<leader>li", "<cmd>LspInfo<cr>", "Lsp info")
+	bm.nkeymap("<leader>la", "<cmd>Lspsaga code_action<cr>", "Code action")
+	bm.nkeymap("<leader>lj", "<cmd>Lspsaga diagnostic_jump_next<cr>", "Next diagnostic")
+	bm.nkeymap("<leader>lk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Previous diagnostic")
+	bm.nkeymap("<leader>lr", vim.lsp.buf.rename, "Rename")
+	bm.nkeymap("<leader>ls", vim.lsp.buf.signature_help, "Signature help")
+	bm.nkeymap("<leader>lq", vim.diagnostic.setloclist, "Set loclist")
 end
 
 M.on_attach = function(client, bufnr)
