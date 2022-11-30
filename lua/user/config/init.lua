@@ -45,3 +45,4 @@ require("smart-splits").setup({
 		"NvimTree",
 	},
 })
+require("user.config.navic").setup()
