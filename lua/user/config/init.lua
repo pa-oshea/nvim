@@ -11,7 +11,6 @@ require(... .. ".illuminate")
 require(... .. ".indentline")
 require(... .. ".lualine")
 require(... .. ".mini-surround")
-require(... .. ".notify")
 require(... .. ".nvim-tree")
 require(... .. ".project")
 require(... .. ".telescope")
@@ -19,6 +18,7 @@ require(... .. ".toggleterm")
 require(... .. ".treesitter")
 require(... .. ".whichkey")
 
+vim.notify = require("notify")
 -- Used for the ufo plugin
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 vim.o.foldcolumn = "1"
@@ -33,3 +33,15 @@ require("impatient").enable_profile()
 require("lsp-colors").setup()
 require("fidget").setup()
 require("symbols-outline").setup()
+require("smart-splits").setup({
+	ignored_filetypes = {
+		"nofile",
+		"quickfix",
+		"qf",
+		"prompt",
+	},
+	ignored_buftypes = {
+		"nofile",
+		"NvimTree",
+	},
+})
