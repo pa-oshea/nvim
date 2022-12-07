@@ -6,7 +6,7 @@ surround.setup({
 	highlight_duration = 500,
 	mappings = {
 		add = "<space>s",
-		delete = "<space>Sd",
+		delete = "<space>sd",
 		find = "<space>sf",
 		find_left = "<space>sF",
 		highlight = "<spacesh",

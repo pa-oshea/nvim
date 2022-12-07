@@ -6,7 +6,7 @@ project.setup({
 	detection_methods = { "pattern" },
 
 	-- patterns used to detect root dir, when **"pattern"** is in detection_methods
-	patterns = { ".git", "Makefile", "package.json" },
+	patterns = { ".git", "Makefile", "package.json", "go.mod" },
 })
 
 local telescope = require("telescope")

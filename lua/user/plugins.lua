@@ -43,6 +43,16 @@ packer.init({
 
 -- Install your plugins here
 return packer.startup(function(use)
+	-- TODO too look at
+	-- b0o/schemastore.nvim
+	-- lunarvim/bigfile.nvim
+	-- kevinhwang91/nvim-bqf
+	-- tamago324/nlsp-settings.nvim
+	-- Tastyep/structlog.nvim
+	-- p00f/nvim-ts-rainbow
+	-- stevearc/aerial.nvim
+	-- Shatur/neovim-session-manager
+	-- 
 	-- My plugins here
 	use("wbthomason/packer.nvim") -- Have packer manage itself
 	use("nvim-lua/popup.nvim")
@@ -101,7 +111,6 @@ return packer.startup(function(use)
 	use("simrat39/symbols-outline.nvim")
 	use("mrjones2014/smart-splits.nvim")
 	use("SmiteshP/nvim-navic")
-	-- ariel
 
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
@@ -130,6 +139,8 @@ return packer.startup(function(use)
 	use("echasnovski/mini.surround") -- Surround text with delimiters such as brackets and quotes
 	use("numToStr/Comment.nvim")
 	use("JoosepAlviste/nvim-ts-context-commentstring")
+
+    use("ThePrimeagen/vim-be-good")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

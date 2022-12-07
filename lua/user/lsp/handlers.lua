@@ -2,6 +2,7 @@ local M = {}
 
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
+-- Adds additional functinality to the lsp client. E.g: completion, snippetSupport, code folding
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 -- ufo folding
@@ -13,7 +14,6 @@ M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
 
 M.setup = function()
 	local signs = {
-
 		{ name = "DiagnosticSignError", text = "" },
 		{ name = "DiagnosticSignWarn", text = "" },
 		{ name = "DiagnosticSignHint", text = "" },
@@ -24,21 +24,19 @@ M.setup = function()
 		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 	end
 
+	-- https://neovim.io/doc/user/diagnostic.html#diagnostic-api
+	-- Defaults
+	-- virtual_text = true
+	-- signs = {
+	--      active = signs
+	-- }
+	-- update_in_insert = false,
+	-- underline = true,
+	-- float = { style = "minimal", header = "", prefix = ""}
 	local config = {
-		virtual_text = true, -- disable virtual text
-		signs = {
-			active = signs, -- show signs
-		},
-		update_in_insert = true,
-		underline = true,
 		severity_sort = true,
 		float = {
-			focusable = true,
-			style = "minimal",
-			border = "rounded",
-			source = "always",
-			header = "",
-			prefix = "",
+			border = "single",
 		},
 	}
 
@@ -91,9 +89,9 @@ M.on_attach = function(client, bufnr)
 		client.server_capabilities.documentFormattingProvider = false
 	end
 
-    if client.server_capabilities.documentSymbolProvider then
-        require("nvim-navic").attach(client, bufnr)
-    end
+	if client.server_capabilities.documentSymbolProvider then
+		require("nvim-navic").attach(client, bufnr)
+	end
 	lsp_keymaps(bufnr)
 	local status_ok, illuminate = pcall(require, "illuminate")
 	if not status_ok then

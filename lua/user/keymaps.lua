@@ -20,6 +20,9 @@ km.nkeymap("<C-q>", "<cmd>q!<cr>", "Force quit")
 -- Better paste
 km.vkeymap("p", '"_dP')
 
+km.nkeymap("<C-d>", "<C-d>zz")
+km.nkeymap("<C-u>", "<C-u>zz")
+
 -- Stay in indent mode
 km.vkeymap("<", "<gv")
 km.vkeymap(">", ">gv")
