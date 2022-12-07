@@ -1,12 +1,5 @@
 local M = {}
 
---- Check if a plugin is installed and available
---- @param plugin string plugin to check
---- @return boolean
-function M.is_available(plugin)
-	return packer_plugins ~= nil and packer_plugins[plugin] ~= nil
-end
-
 --- Smarter quit, checks if a buffer is not saved first
 --- and gives a prompt to save
 function M.smart_quit()

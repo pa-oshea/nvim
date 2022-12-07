@@ -41,7 +41,7 @@ for _, server in pairs(servers) do
 
 	server = vim.split(server, "@")[1]
 
-    -- add addtional settings to the lsp server from the settings folder
+	-- add addtional settings to the lsp server from the settings folder
 	local require_ok, conf_opts = pcall(require, "user.lsp.settings." .. server)
 	if require_ok then
 		opts = vim.tbl_deep_extend("force", conf_opts, opts)

@@ -52,7 +52,7 @@ return packer.startup(function(use)
 	-- p00f/nvim-ts-rainbow
 	-- stevearc/aerial.nvim
 	-- Shatur/neovim-session-manager
-	-- 
+	--
 	-- My plugins here
 	use("wbthomason/packer.nvim") -- Have packer manage itself
 	use("nvim-lua/popup.nvim")
@@ -79,9 +79,6 @@ return packer.startup(function(use)
 	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-nvim-lua")
-	use("hrsh7th/cmp-calc")
-	use("hrsh7th/cmp-emoji")
-	use("chrisgrieser/cmp-nerdfont")
 
 	-- snippets
 	use("L3MON4D3/LuaSnip") --snippet engine
@@ -140,7 +137,7 @@ return packer.startup(function(use)
 	use("numToStr/Comment.nvim")
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 
-    use("ThePrimeagen/vim-be-good")
+	use("ThePrimeagen/vim-be-good")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

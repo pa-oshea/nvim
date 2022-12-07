@@ -1,5 +1,4 @@
 local km = require("user.utils.keymapper")
-local is_available = require("user.utils.functions").is_available
 --Remap space as leader key
 km.keymap("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
@@ -39,70 +38,49 @@ km.nkeymap("<leader>pI", "<cmd>Mason<cr>", "Mason installer")
 km.nkeymap("<leader>pU", "<cmd>MasonUpdateAll<cr>", "Mason update")
 
 -- Naviage buffers
-if is_available("bufferline.nvim") then
-	km.nkeymap("<S-l>", "<cmd>BufferLineCycleNext<cr>", "Next buffer tab")
-	km.nkeymap("<S-h>", "<cmd>BufferLineCyclePrev<cr>", "Previous buffer tab")
-	km.nkeymap(">b", "<cmd>BufferLineMoveNext<cr>", "Move buffer tab right")
-	km.nkeymap("<b", "<cmd>BufferLineMovePrev<cr>", "Move buffer tab left")
-else
-	km.nkeymap("<S-l>", ":bnext<CR>", "Next buffer")
-	km.nkeymap("<S-h>", ":bprevious<CR>", "Previous buffer")
-end
+km.nkeymap("<S-l>", "<cmd>BufferLineCycleNext<cr>", "Next buffer tab")
+km.nkeymap("<S-h>", "<cmd>BufferLineCyclePrev<cr>", "Previous buffer tab")
+km.nkeymap(">b", "<cmd>BufferLineMoveNext<cr>", "Move buffer tab right")
+km.nkeymap("<b", "<cmd>BufferLineMovePrev<cr>", "Move buffer tab left")
 
 -- Deleting buffers
-if is_available("bufdelete.nvim") then
-	km.nkeymap("<leader>c", function()
-		require("bufdelete").bufdelete(0, false)
-	end, "Close buffer")
+km.nkeymap("<leader>c", function()
+	require("bufdelete").bufdelete(0, false)
+end, "Close buffer")
 
-	km.nkeymap("<leader>C", function()
-		require("bufdelete").bufdelete(0, true)
-	end, "Force close buffer")
-else
-	km.nkeymap("<leader>c", "<cmd>bdelete<cr>", "Close buffer")
-	km.nkeymap("<leader>C", "<cmd>bdelete!", "Force close buffer")
-end
+km.nkeymap("<leader>C", function()
+	require("bufdelete").bufdelete(0, true)
+end, "Force close buffer")
 
--- Smart splits
-if is_available("smart-splits.nvim") then
-	local splits = require("smart-splits")
-	-- Navigation
-	km.nkeymap("<C-h>", function()
-		splits.move_cursor_left()
-	end, "Move to left split")
-	km.nkeymap("<C-j>", function()
-		splits.move_cursor_down()
-	end, "Move to below split")
-	km.nkeymap("C-k>", function()
-		splits.move_cursor_up()
-	end, "Move to above split")
-	km.nkeymap("<C-l>", function()
-		splits.move_cursor_right()
-	end, "Move to right split")
+-- Smart splits FIXME
+local splits = require("smart-splits")
+-- Navigation
+km.nkeymap("<C-h>", function()
+	splits.move_cursor_left()
+end, "Move to left split")
+km.nkeymap("<C-j>", function()
+	splits.move_cursor_down()
+end, "Move to below split")
+km.nkeymap("C-k>", function()
+	splits.move_cursor_up()
+end, "Move to above split")
+km.nkeymap("<C-l>", function()
+	splits.move_cursor_right()
+end, "Move to right split")
 
-	-- Resize
-	km.nkeymap("<C-Up>", function()
-		splits.resize_up()
-	end, "Resize split up")
-	km.nkeymap("<C-Down>", function()
-		splits.resize_down()
-	end, "Resize split down")
-	km.nkeymap("<C-Left", function()
-		splits.resize_left()
-	end, "Resize split left")
-	km.nkeymap("<C-Right", function()
-		splits.resize_right()
-	end, "Resize split right")
-else
-	km.nkeymap("<C-h>", "<C-w>h", "Move to left split")
-	km.nkeymap("<C-j>", "<C-w>j", "Move to below split")
-	km.nkeymap("<C-k>", "<C-w>k", "Move to above split")
-	km.nkeymap("<C-l>", "<C-w>l", "Move to right split")
-	km.nkeymap("<C-Up>", ":resize -2<CR>", "Resize up")
-	km.nkeymap("<C-Down>", ":resize +2<CR>", "Resize down")
-	km.nkeymap("<C-Left>", ":vertical resize -2<CR>", "Resize left")
-	km.nkeymap("<C-Right>", ":vertical resize +2<CR>", "Resize right")
-end
+-- Resize
+km.nkeymap("<A-k>", function()
+	splits.resize_up()
+end, "Resize split up")
+km.nkeymap("<A->", function()
+	splits.resize_down()
+end, "Resize split down")
+km.nkeymap("<A-h", function()
+	splits.resize_left()
+end, "Resize split left")
+km.nkeymap("<A-l", function()
+	splits.resize_right()
+end, "Resize split right")
 
 -- Plugins --
 -- Telescope
