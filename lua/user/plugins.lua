@@ -49,28 +49,20 @@ return packer.startup(function(use)
 	-- kevinhwang91/nvim-bqf
 	-- tamago324/nlsp-settings.nvim
 	-- Tastyep/structlog.nvim
-	-- p00f/nvim-ts-rainbow
 	-- stevearc/aerial.nvim
 	-- Shatur/neovim-session-manager
 	--
-	-- My plugins here
 	use("wbthomason/packer.nvim") -- Have packer manage itself
 	use("nvim-lua/popup.nvim")
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used by lots of plugins
 	use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
-	use("moll/vim-bbye")
-	use("nvim-lualine/lualine.nvim")
-	use("akinsho/toggleterm.nvim")
+	use("moll/vim-bbye") -- TODO Maybe delete this
 	use("ahmedkhalf/project.nvim")
 	use("lewis6991/impatient.nvim")
-	use("max397574/better-escape.nvim")
-	use("sitiom/nvim-numbertoggle")
-	use("kevinhwang91/nvim-ufo")
-	use("kevinhwang91/promise-async")
-	use("onsails/lspkind-nvim")
 
 	-- Colorschemes
 	use("folke/tokyonight.nvim")
+    use("nyoom-engineering/oxocarbon.nvim")
 
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
@@ -94,6 +86,7 @@ return packer.startup(function(use)
 	use("j-hui/fidget.nvim")
 	use("glepnir/lspsaga.nvim")
 	use("folke/neodev.nvim", { module = "neodev" })
+	use("onsails/lspkind-nvim")
 
 	-- UI / interface
 	use("RRethy/vim-illuminate")
@@ -108,16 +101,25 @@ return packer.startup(function(use)
 	use("simrat39/symbols-outline.nvim")
 	use("mrjones2014/smart-splits.nvim")
 	use("SmiteshP/nvim-navic")
+	use("nvim-lualine/lualine.nvim")
+	use("akinsho/toggleterm.nvim")
+	use("sitiom/nvim-numbertoggle")
+	use("norcalli/nvim-colorizer.lua")
 
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
 	use("nvim-telescope/telescope-ui-select.nvim")
-	-- use "nvim-telescope/telescope-media-files.nvim"
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
 	-- Treesitter
 	use("nvim-treesitter/nvim-treesitter", {
 		run = ":TSUpdate",
 	})
+	use("nvim-treesitter/nvim-treesitter-textobjects")
+	use("p00f/nvim-ts-rainbow")
+	use("andymass/vim-matchup")
+	use("RRethy/nvim-treesitter-textsubjects")
+	use("nvim-treesitter/nvim-treesitter-context")
 
 	-- Git
 	use("lewis6991/gitsigns.nvim")
@@ -133,9 +135,12 @@ return packer.startup(function(use)
 
 	-- Shortcuts
 	use("famiu/bufdelete.nvim")
-	use("echasnovski/mini.surround") -- Surround text with delimiters such as brackets and quotes
+	use("kylechui/nvim-surround") -- Surround text with delimiters such as brackets and quotes
 	use("numToStr/Comment.nvim")
 	use("JoosepAlviste/nvim-ts-context-commentstring")
+	use("max397574/better-escape.nvim")
+	use("kevinhwang91/nvim-ufo")
+	use("kevinhwang91/promise-async")
 
 	use("ThePrimeagen/vim-be-good")
 

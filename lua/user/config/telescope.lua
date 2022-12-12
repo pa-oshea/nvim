@@ -21,14 +21,6 @@ telescope.setup({
 			},
 		},
 	},
-	-- pickers = {
-	-- 	find_files = {
-	-- 		theme = "ivy",
-	--            layout_config = {
-	--                height = 50
-	--            }
-	-- 	},
-	-- },
 	extensions = {
 		["ui-select"] = {
 			require("telescope.themes").get_dropdown({}),

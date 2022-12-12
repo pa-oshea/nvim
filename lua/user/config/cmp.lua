@@ -72,7 +72,6 @@ cmp.setup({
 				luasnip = "Snippet",
 				buffer = "Buffer",
 				path = "Path",
-				emoji = "Emoji",
 			},
 			mode = "text_symbol",
 			maxwidth = 500,
@@ -84,9 +83,6 @@ cmp.setup({
 		{ name = "luasnip" },
 		{ name = "buffer" },
 		{ name = "path" },
-		{ name = "calc" },
-		{ name = "emoji" },
-		{ name = "nerdfont" },
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,

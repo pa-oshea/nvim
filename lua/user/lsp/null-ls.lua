@@ -17,11 +17,7 @@ null_ls.setup({
 		formatting.prettier.with({
 			extra_filetypes = { "toml" },
 		}),
-		formatting.black.with({ extra_args = { "--fast" } }),
 		formatting.stylua,
 		formatting.gofmt,
-		formatting.google_java_format,
-		code_actions.eslint,
-		diagnostics.flake8,
 	},
 })
