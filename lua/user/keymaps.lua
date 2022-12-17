@@ -4,7 +4,7 @@ km.keymap("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-km.nkeymap("<leader>A", "<cmd>Alpha<cr>", " Open alpha")
+km.nkeymap("<leader>;", "<cmd>Alpha<cr>", " Open alpha")
 
 -- TODO key map to move the current line down, also one to duplicate the current line
 -- Standard remaps
@@ -33,6 +33,8 @@ km.nkeymap("<C-u>", "<C-u>zz")
 km.nkeymap("<leader>y", "\"+y")
 km.vkeymap("<leader>y", "\"+y")
 km.nkeymap("<leader>Y", "\"+Y")
+
+km.ikeymap("<C-c>", "<Esc>")
 
 km.nkeymap("<leader>u", "<cmd>UndotreeToggle<cr>", "Undo tree")
 
@@ -105,6 +107,7 @@ km.nkeymap("<leader>fb", "<cmd>Telescope buffers<cr>", "Browse buffers")
 km.nkeymap("<leader>fg", "<cmd>Telescope live_grep<cr>", "Live grep")
 km.nkeymap("<leader>fp", "<cmd>Telescope projects<cr>", "Browse projects")
 km.nkeymap("<leader>fr", "<cmd>Telescope lsp_references<cr>", "Browse references")
+km.nkeymap("<leader>fh", "<cmd>Telescope help_tags", "Help tags")
 
 -- Notify
 km.wk.register({ ["<leader>n"] = { name = " Notifications" } }, { mode = "n" })
