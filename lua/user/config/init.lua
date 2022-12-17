@@ -49,3 +49,9 @@ require("user.config.navic").setup()
 require("nvim-surround").setup()
 require("colorizer").setup()
 require("treesitter-context").setup()
+-- require("decay").setup({
+--     style = "dark", -- dacayce, normal, dark
+--     nvim_tree = {
+--         contrast = true
+--     }
+-- })

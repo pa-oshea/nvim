@@ -17,10 +17,25 @@ km.nkeymap("<leader>fn", "<cmd>enew<cr>", "New file")
 km.nkeymap("<C-s>", "<cmd>w!<cr>", "Force write")
 km.nkeymap("<C-q>", "<cmd>q!<cr>", "Force quit")
 -- Better paste
-km.vkeymap("p", '"_dP')
+-- km.vkeymap("p", '"_dP')
+km.xkeymap("<leader>p", "\"_dP")
 
+-- Move stuff
+km.vkeymap("J", ":m '>+1<CR>gv=gv")
+km.vkeymap("K", ":m '<-2<CR>gv=gv")
+
+km.nkeymap("n", "nzzzv")
+km.nkeymap("N", "Nzzzv")
 km.nkeymap("<C-d>", "<C-d>zz")
 km.nkeymap("<C-u>", "<C-u>zz")
+
+-- yank to system clipboard
+km.nkeymap("<leader>y", "\"+y")
+km.vkeymap("<leader>y", "\"+y")
+km.nkeymap("<leader>Y", "\"+Y")
+
+km.nkeymap("<leader>u", "<cmd>UndotreeToggle<cr>", "Undo tree")
+
 
 -- Stay in indent mode
 km.vkeymap("<", "<gv")
@@ -72,7 +87,7 @@ end, "Move to right split")
 km.nkeymap("<A-k>", function()
 	splits.resize_up()
 end, "Resize split up")
-km.nkeymap("<A->", function()
+km.nkeymap("<A-j>", function()
 	splits.resize_down()
 end, "Resize split down")
 km.nkeymap("<A-h", function()

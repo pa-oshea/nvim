@@ -59,10 +59,12 @@ return packer.startup(function(use)
 	use("moll/vim-bbye") -- TODO Maybe delete this
 	use("ahmedkhalf/project.nvim")
 	use("lewis6991/impatient.nvim")
+	use("mbbill/undotree")
 
 	-- Colorschemes
 	use("folke/tokyonight.nvim")
-    use("nyoom-engineering/oxocarbon.nvim")
+	use("nyoom-engineering/oxocarbon.nvim")
+	use({ "decaycs/decay.nvim", as = "decay" })
 
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
