@@ -6,7 +6,7 @@ telescope.setup({
 		prompt_prefix = " ",
 		selection_caret = " ",
 		path_display = { "smart" },
-		file_ignore_patterns = { ".git/", "node_modules" },
+		file_ignore_patterns = {},
 		sorting_strategy = "ascending",
 		layout_config = {
 			mirror = false,
@@ -20,8 +20,45 @@ telescope.setup({
 				["<C-k>"] = actions.move_selection_previous,
 			},
 		},
+		pickers = {
+			find_files = {
+				hidden = true,
+			},
+			live_grep = {
+				--@usage don't include the filename in the search results
+				only_sort_text = true,
+			},
+			grep_string = {
+				only_sort_text = true,
+			},
+			buffers = {
+				initial_mode = "normal",
+				mappings = {
+					i = {
+						["<C-d>"] = actions.delete_buffer,
+					},
+					n = {
+						["dd"] = actions.delete_buffer,
+					},
+				},
+			},
+			planets = {
+				show_pluto = true,
+				show_moon = true,
+			},
+			git_files = {
+				hidden = true,
+				show_untracked = true,
+			},
+		},
 	},
 	extensions = {
+		fzf = {
+			fuzzy = true,
+			override_generic_sorter = true,
+			override_file_sorter = true,
+			case_mode = "smart_case",
+		},
 		["ui-select"] = {
 			require("telescope.themes").get_dropdown({}),
 		},
@@ -29,3 +66,5 @@ telescope.setup({
 })
 
 telescope.load_extension("ui-select")
+telescope.load_extension("fzf")
+telescope.load_extension("projects")

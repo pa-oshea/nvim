@@ -12,13 +12,12 @@ km.nkeymap("<leader>w", "<cmd>w<cr>", "Save")
 km.nkeymap("<leader>q", function()
 	require("user.utils.functions").smart_quit()
 end, "Quit")
-km.nkeymap("<leader>h", "<cmd>nohlsearch<CR>", "Clear highlight")
 km.nkeymap("<leader>fn", "<cmd>enew<cr>", "New file")
 km.nkeymap("<C-s>", "<cmd>w!<cr>", "Force write")
 km.nkeymap("<C-q>", "<cmd>q!<cr>", "Force quit")
 -- Better paste
 -- km.vkeymap("p", '"_dP')
-km.xkeymap("<leader>p", "\"_dP")
+km.xkeymap("<leader>p", '"_dP')
 
 -- Move stuff
 km.vkeymap("J", ":m '>+1<CR>gv=gv")
@@ -30,14 +29,13 @@ km.nkeymap("<C-d>", "<C-d>zz")
 km.nkeymap("<C-u>", "<C-u>zz")
 
 -- yank to system clipboard
-km.nkeymap("<leader>y", "\"+y")
-km.vkeymap("<leader>y", "\"+y")
-km.nkeymap("<leader>Y", "\"+Y")
+km.nkeymap("<leader>y", '"+y')
+km.vkeymap("<leader>y", '"+y')
+km.nkeymap("<leader>Y", '"+Y')
 
 km.ikeymap("<C-c>", "<Esc>")
 
 km.nkeymap("<leader>u", "<cmd>UndotreeToggle<cr>", "Undo tree")
-
 
 -- Stay in indent mode
 km.vkeymap("<", "<gv")
@@ -78,7 +76,7 @@ end, "Move to left split")
 km.nkeymap("<C-j>", function()
 	splits.move_cursor_down()
 end, "Move to below split")
-km.nkeymap("C-k>", function()
+km.nkeymap("<C-k>", function()
 	splits.move_cursor_up()
 end, "Move to above split")
 km.nkeymap("<C-l>", function()
@@ -176,3 +174,8 @@ km.nkeymap("<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", "Repl toggle
 km.nkeymap("<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", "Run last")
 km.nkeymap("<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", "Dap ui toggle")
 km.nkeymap("<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", "Terminate")
+
+-- Help
+km.wk.register({ ["<leader>h"] = { name = "Help" } }, { mode = "n" })
+km.nkeymap("<leader>hm", "<cmd>nmap<cr>", "Show key maps")
+km.nkeymap("<leader>hf", "<cmd>Telescope keymaps<cr>", "Show key maps")

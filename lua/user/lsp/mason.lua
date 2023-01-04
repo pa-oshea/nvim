@@ -8,7 +8,7 @@ local servers = {
 	"bashls",
 	"jsonls",
 	"yamlls",
-    "rust_analyzer"
+	"rust_analyzer",
 }
 
 local settings = {
@@ -28,6 +28,9 @@ require("mason").setup(settings)
 require("mason-lspconfig").setup({
 	ensure_installed = servers,
 	automatic_installation = true,
+})
+require("mason-nvim-dap").setup({
+	ensure_installed = { "delve" },
 })
 
 local lspconfig = require("lspconfig")

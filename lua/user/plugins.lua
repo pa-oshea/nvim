@@ -78,10 +78,13 @@ return packer.startup(function(use)
 	use("L3MON4D3/LuaSnip") --snippet engine
 	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
-	-- LSP
-	use("neovim/nvim-lspconfig") -- enable LSP
+	-- Mason
 	use("williamboman/mason.nvim")
 	use("williamboman/mason-lspconfig.nvim")
+	use("jayp0521/mason-nvim-dap.nvim")
+
+	-- LSP
+	use("neovim/nvim-lspconfig") -- enable LSP
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 	use("ray-x/lsp_signature.nvim")
 	use("folke/trouble.nvim")
@@ -130,7 +133,6 @@ return packer.startup(function(use)
 	-- DAP
 	use("mfussenegger/nvim-dap")
 	use("rcarriga/nvim-dap-ui")
-	use("ravenxrz/DAPInstall.nvim")
 
 	-- which key
 	use("folke/which-key.nvim")
@@ -144,7 +146,23 @@ return packer.startup(function(use)
 	use("kevinhwang91/nvim-ufo")
 	use("kevinhwang91/promise-async")
 
+	-- Go lang stuff
+	use("olexsmir/gopher.nvim")
+	use("leoluz/nvim-dap-go")
+
 	use("ThePrimeagen/vim-be-good")
+
+	-- zen mode
+	-- use({
+	-- 	"folke/zen-mode.nvim",
+	-- 	config = function()
+	-- 		require("zen-mode").setup({
+	-- 			-- your configuration comes here
+	-- 			-- or leave it empty to use the default settings
+	-- 			-- refer to the configuration section below
+	-- 		})
+	-- 	end,
+	-- }) --
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

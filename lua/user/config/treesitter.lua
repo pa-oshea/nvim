@@ -9,7 +9,7 @@ if not status_ok_ts then
 end
 
 configs.setup({
-	ensure_installed = { "go", "lua", "rust", "typescript", "bash", "python" }, -- put the language you want in this array
+	ensure_installed = { "go", "gomod", "lua", "rust", "typescript", "bash", "python" }, -- put the language you want in this array
 	-- ensure_installed = "all", -- one of "all" or a list of languages
 	ignore_install = { "" }, -- List of parsers to ignore installing
 	sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
@@ -25,17 +25,18 @@ configs.setup({
 			node_decrementel = "<c-backspace>",
 		},
 	},
+	-- TODO find out why this isn't working 
 	textObjects = {
 		select = {
 			enable = true,
 			lookahead = true,
 			keymaps = {
-				["aa"] = "@parameter.outer",
-				["ia"] = "@parameter.inner",
-				["af"] = "@function.outer",
-				["if"] = "@function.inner",
-				["ac"] = "@class.outer",
-				["ic"] = "@class.inner",
+				["aa"] = { query = "@parameter.outer", desc = "Select outer parameter" },
+				["ia"] = { query = "@parameter.inner", desc = "Select inner parameter" },
+				["af"] = { query = "@function.outer", desc = "Select outer function" },
+				["if"] = { query = "@function.inner", desc = "Select inner function" },
+				["ac"] = { query = "@class.outer", desc = "Select outer class" },
+				["ic"] = { query = "@class.inner", desc = "Select inner class" },
 			},
 		},
 		move = {
