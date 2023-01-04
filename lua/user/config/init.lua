@@ -28,7 +28,7 @@ vim.o.foldenable = true
 require("neodev").setup()
 require("ufo").setup()
 require("better_escape").setup()
-require("numbertoggle").setup()
+-- require("numbertoggle").setup()
 require("impatient").enable_profile()
 require("lsp-colors").setup()
 require("fidget").setup()

@@ -105,9 +105,10 @@ km.wk.register({ ["<leader>f"] = { name = " Telescope" } }, { mode = "n" })
 km.nkeymap("<leader>ff", "<cmd>Telescope find_files<cr>", "Find file")
 km.nkeymap("<leader>fb", "<cmd>Telescope buffers<cr>", "Browse buffers")
 km.nkeymap("<leader>fg", "<cmd>Telescope live_grep<cr>", "Live grep")
+km.nkeymap("<leader>fa", "<cmd>Telescope git_files<cr>", "Find git files")
 km.nkeymap("<leader>fp", "<cmd>Telescope projects<cr>", "Browse projects")
 km.nkeymap("<leader>fr", "<cmd>Telescope lsp_references<cr>", "Browse references")
-km.nkeymap("<leader>fh", "<cmd>Telescope help_tags", "Help tags")
+km.nkeymap("<leader>fh", "<cmd>Telescope help_tags<cr>", "Help tags")
 
 -- Notify
 km.wk.register({ ["<leader>n"] = { name = " Notifications" } }, { mode = "n" })
