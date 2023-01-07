@@ -110,6 +110,21 @@ return packer.startup(function(use)
 	use("akinsho/toggleterm.nvim")
 	use("sitiom/nvim-numbertoggle")
 	use("norcalli/nvim-colorizer.lua")
+	use({
+		"melkster/modicator.nvim",
+		after = "tokyonight.nvim", -- Add your colorscheme plugin here
+		setup = function()
+			-- These are required for Modicator to work
+			vim.o.cursorline = true
+			vim.o.number = true
+			vim.o.termguicolors = true
+		end,
+		config = function()
+			require("modicator").setup({
+				-- ...
+			})
+		end,
+	})
 
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
@@ -149,6 +164,8 @@ return packer.startup(function(use)
 	-- Go lang stuff
 	use("olexsmir/gopher.nvim")
 	use("leoluz/nvim-dap-go")
+	-- use("ray-x/go.nvim")
+	-- use("ray-x/guihua.lua")
 
 	use("ThePrimeagen/vim-be-good")
 

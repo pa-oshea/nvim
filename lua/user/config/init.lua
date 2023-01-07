@@ -45,6 +45,7 @@ require("smart-splits").setup({
 		"NvimTree",
 	},
 })
+-- require("go").setup()
 require("user.config.navic").setup()
 require("nvim-surround").setup()
 require("colorizer").setup()
