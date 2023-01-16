@@ -1,23 +1,70 @@
 local status_ok, _ = pcall(require, "nvim-treesitter")
 if not status_ok then
+	vim.notify("Treesitter now loaded", "error")
 	return
 end
 
 local status_ok_ts, configs = pcall(require, "nvim-treesitter.configs")
 if not status_ok_ts then
+	vim.notify("Treesitter configs could not be loaded", "error")
 	return
 end
 
+local lines = vim.fn.line("$")
+if lines > 30000 then
+	vim.cmd([[syntax manual]])
+	print("skip treesitter")
+	return
+end
+
+local enable = false
+local langtree = false
+
+if lines > 7000 then
+	enable = false
+	langtree = false
+	vim.cmd([[syntax on]])
+else
+	enable = true
+	langtree = true
+	print("ts enabled")
+end
+
+local ts_ensure_installed = {
+	"bash",
+	"go",
+	"css",
+	"html",
+	"javascript",
+	"typescript",
+	"jsdoc",
+	"json",
+	"c",
+	"java",
+	"toml",
+	"tsx",
+	"lua",
+	"cpp",
+	"python",
+	"rust",
+	"jsonc",
+	"yaml",
+	"sql",
+	"vue",
+	"vim",
+}
+
 configs.setup({
-	ensure_installed = { "go", "gomod", "lua", "rust", "typescript", "bash", "python" }, -- put the language you want in this array
-	-- ensure_installed = "all", -- one of "all" or a list of languages
-	ignore_install = { "" }, -- List of parsers to ignore installing
-	sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
+	ensure_installed = ts_ensure_installed,
 	highlight = {
-		enable = true, -- false will disable the whole extension
+		enable = enable,
+		use_languagetree = langtree,
 	},
+	indent = { enable = enable },
+	autopair = { enable = enable },
+	rainbow = { enable = enable, extended_mode = true },
 	incremental_selection = {
-		enable = true,
+		enable = enable,
 		keymaps = {
 			init_selection = "<c-space>",
 			node_incremental = "<c-space>",
@@ -25,8 +72,7 @@ configs.setup({
 			node_decrementel = "<c-backspace>",
 		},
 	},
-	-- TODO find out why this isn't working
-	textObjects = {
+	textobjects = {
 		select = {
 			enable = true,
 			lookahead = true,
@@ -67,31 +113,6 @@ configs.setup({
 			swap_previous = {
 				["<leader>A"] = "@parameter.inner",
 			},
-		},
-	},
-	autopairs = {
-		enable = true,
-	},
-	indent = { enable = true, disable = { "python", "css" } },
-
-	context_commentstring = {
-		enable = true,
-		enable_autocmd = false,
-	},
-	rainbow = {
-		enable = true,
-		extended_node = true,
-	},
-	matchup = {
-		enable = true,
-	},
-	textsubjects = {
-		enable = true,
-		prev_selection = ",", -- (Optional) keymap to select the previous selection
-		keymaps = {
-			["."] = "textsubjects-smart",
-			[";"] = "textsubjects-container-outer",
-			["i;"] = "textsubjects-container-inner",
 		},
 	},
 })

@@ -1,4 +1,4 @@
-vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+--vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 vim.opt.backup = false -- creates a backup file
 vim.opt.relativenumber = true
 vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard

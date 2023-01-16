@@ -1,9 +1,4 @@
-require("user.options")
-require("user.keymaps")
-require("user.plugins")
-require("user.colorscheme")
-require("user.lsp")
-require("user.config")
+require("core")
 
 if vim.g.neovide then
 	vim.o.guifont = "JetBrains Mono:h10.5"

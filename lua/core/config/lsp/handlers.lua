@@ -13,30 +13,11 @@ M.capabilities.textDocument.foldingRange = {
 M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
 
 M.setup = function()
-	local signs = {
-		{ name = "DiagnosticSignError", text = "" },
-		{ name = "DiagnosticSignWarn", text = "" },
-		{ name = "DiagnosticSignHint", text = "" },
-		{ name = "DiagnosticSignInfo", text = "" },
-	}
-
-	for _, sign in ipairs(signs) do
-		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-	end
-
 	-- https://neovim.io/doc/user/diagnostic.html#diagnostic-api
-	-- Defaults
-	-- virtual_text = true
-	-- signs = {
-	--      active = signs
-	-- }
-	-- update_in_insert = false,
-	-- underline = true,
-	-- float = { style = "minimal", header = "", prefix = ""}
 	local config = {
 		severity_sort = true,
 		float = {
-			border = "none",
+			border = "single",
 		},
 	}
 
@@ -52,7 +33,7 @@ M.setup = function()
 end
 
 local function lsp_keymaps(bufnr)
-	local km = require("user.utils.keymapper")
+	local km = require("core.utils.keymapper")
 	local bm = km.create_bufkeymapper(bufnr)
 	-- bm.nkeymap("gD", function()
 	-- 	vim.cmd("tab split")
@@ -87,6 +68,7 @@ M.on_attach = function(client, bufnr)
 
 	if client.name == "gopls" then
 		client.server_capabilities.documentFormattingProvider = false
+		vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 	end
 
 	if client.server_capabilities.documentSymbolProvider then

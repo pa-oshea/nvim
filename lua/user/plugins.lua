@@ -43,15 +43,6 @@ packer.init({
 
 -- Install your plugins here
 return packer.startup(function(use)
-	-- TODO too look at
-	-- b0o/schemastore.nvim
-	-- lunarvim/bigfile.nvim
-	-- kevinhwang91/nvim-bqf
-	-- tamago324/nlsp-settings.nvim
-	-- Tastyep/structlog.nvim
-	-- stevearc/aerial.nvim
-	-- Shatur/neovim-session-manager
-	--
 	use("wbthomason/packer.nvim") -- Have packer manage itself
 	use("nvim-lua/popup.nvim")
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used by lots of plugins
