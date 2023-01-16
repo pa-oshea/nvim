@@ -5,9 +5,9 @@ return {
 	{ "williamboman/mason-lspconfig.nvim" },
 	{ "jayp0521/mason-nvim-dap.nvim" },
 	{ "onsails/lspkind.nvim" },
-	{ 
+	{
 		"glepnir/lspsaga.nvim",
-		event = "BufRead"
+		event = "BufRead",
 	},
 	{ "jose-elias-alvarez/null-ls.nvim" },
 	{
