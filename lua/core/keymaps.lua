@@ -1,39 +1,31 @@
-local km = require("core.utils.keymapper")
-
 --Remap space as leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-km.keymap("", "<Space>", "<Nop>")
-km.nkeymap("<C-s>", "<cmd>w!<cr>", "Force write")
-
 -- Move stuff
-km.vkeymap("J", ":m '>+1<CR>gv=gv")
-km.vkeymap("K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("n", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("n", "K", ":m '<-2<CR>gv=gv")
 
-km.nkeymap("n", "nzzzv")
-km.nkeymap("N", "Nzzzv")
-km.nkeymap("<C-d>", "<C-d>zz")
-km.nkeymap("<C-u>", "<C-u>zz")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
-km.ikeymap("<C-c>", "<Esc>")
+vim.keymap.set("n", "Q", "<nop>")
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<cr>")
+vim.keymap.set("i", "<C-c>", "<Esc>")
 
 -- Stay in indent mode
-km.vkeymap("<", "<gv")
-km.vkeymap(">", ">gv")
--- Symbols outline
-km.nkeymap("<leader>o", "<cmd>SymbolsOutline<cr>", "Toggle symbol outline")
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
 
-km.nkeymap("<leader>g0", "<cmd>DiffviewOpen HEAD<cr>", "Open diff view HEAD")
-km.nkeymap("<leader>g1", "<cmd>DiffviewOpen HEAD^<cr>", "Open diff view HEAD^")
-km.nkeymap("<leader>g2", "<cmd>DiffviewOpen HEAD^^<cr>", "Open diff view HEAD^^")
-km.nkeymap("<leader>g3", "<cmd>DiffviewOpen HEAD^^^<cr>", "Open diff view HEAD^^^")
-km.nkeymap("<leader>g4", "<cmd>DiffviewOpen HEAD^^^^<cr>", "Open diff view HEAD^^^^")
+-- Keep cursor in position with J
+vim.keymap.set("n", "J", "mzJ`z")
 
-km.wk.register({ ["<leader>n"] = { name = " Notifications" } }, { mode = "n" })
-km.nkeymap("<leader>nd", function()
-	require("notify").dismiss({})
-end, "Dismiss notifications")
+-- km.wk.register({ ["<leader>n"] = { name = " Notifications" } }, { mode = "n" })
+-- km.nkeymap("<leader>nd", function()
+-- 	require("notify").dismiss({})
+-- end, "Dismiss notifications")
 
 -- Smart splits FIXME
 -- local splits = require("smart-splits")

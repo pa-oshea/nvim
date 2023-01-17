@@ -1,5 +1,6 @@
 require("core.config.alpha")
 require("core.config.autopairs")
+require("core.config.bufferline")
 require("core.config.cmp")
 require("core.config.dap")
 require("core.config.gitsigns")

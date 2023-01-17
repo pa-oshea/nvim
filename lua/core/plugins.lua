@@ -77,6 +77,9 @@ require("lazy").setup({
 	-- Lualine https://github.com/nvim-lualine/lualine.nvim
 	{ "nvim-lualine/lualine.nvim" },
 
+	-- Bufferline https://github.com/akinsho/bufferline.nvim
+	{ "akinsho/bufferline.nvim" },
+
 	-- neo tree https://github.com/nvim-neo-tree/neo-tree.nvim
 	{ "nvim-neo-tree/neo-tree.nvim" },
 

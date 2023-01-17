@@ -91,39 +91,63 @@ function M.config()
 					["<C-k>"] = actions.move_selection_previous,
 				},
 			},
-			pickers = {
-				find_files = {
-					theme = "dropdown",
-					previewer = false,
-					hidden = true,
-				},
-				live_grep = {
-					theme = "dropdown",
-					--@usage don't include the filename in the search results
-					only_sort_text = true,
-				},
-				grep_string = {
-					theme = "dropdown",
-					only_sort_text = true,
-				},
-				buffers = {
-					theme = "dropdown",
-					previewer = false,
-					initial_mode = "normal",
-					mappings = {
-						i = {
-							["<C-d>"] = actions.delete_buffer,
-						},
-						n = {
-							["dd"] = actions.delete_buffer,
-						},
+		},
+		pickers = {
+			find_files = {
+				theme = "dropdown",
+				previewer = false,
+				hidden = true,
+			},
+			commands = {
+				theme = "dropdown",
+			},
+			help_tags = {
+				theme = "dropdown",
+			},
+			highlights = {
+				theme = "dropdown",
+			},
+			man_pages = {
+				theme = "dropdown",
+			},
+			oldfiles = {
+				theme = "dropdown",
+			},
+			registers = {
+				theme = "dropdown",
+			},
+			git_branches = {
+				theme = "dropdown",
+			},
+			keymaps = {
+				theme = "dropdown",
+			},
+			live_grep = {
+				theme = "dropdown",
+				--@usage don't include the filename in the search results
+				only_sort_text = true,
+			},
+			grep_string = {
+				theme = "dropdown",
+				only_sort_text = true,
+			},
+			buffers = {
+				theme = "dropdown",
+				previewer = false,
+				initial_mode = "normal",
+				mappings = {
+					i = {
+						["<C-d>"] = actions.delete_buffer,
+					},
+					n = {
+						["dd"] = actions.delete_buffer,
 					},
 				},
-				git_files = {
-					theme = "dropdown",
-					hidden = true,
-					show_untracked = true,
-				},
+			},
+			git_files = {
+				theme = "dropdown",
+				hidden = true,
+				show_untracked = true,
 			},
 		},
 		extensions = {
