@@ -14,7 +14,7 @@ return {
 				gc_details = true,
 				test = true,
 				tidy = true,
-			}
+			},
 		},
 	},
 	init_options = {

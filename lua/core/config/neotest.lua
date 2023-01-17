@@ -11,6 +11,6 @@ vim.diagnostic.config({
 require("neotest").setup({
 	adapters = {
 		require("neotest-go"),
-		require("neotest-jest")
-	}
+		require("neotest-jest"),
+	},
 })
