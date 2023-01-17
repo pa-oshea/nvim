@@ -19,7 +19,7 @@ M.keymap = function(mode, kb, cmd, desc)
 	if desc and wk_status_ok then
 		M.wk.register({
 			[kb] = { desc },
-		}, { mode = mode })
+		}, { mode = mode, noremap = true, silent = true, nowait = true, prefix = "<leader>" })
 	end
 end
 
@@ -89,7 +89,7 @@ M.create_bufkeymapper = function(bufnr)
 		if desc and wk_status_ok then
 			M.wk.register({
 				[kb] = { desc },
-			}, { mode = mode, buffer = bufnr })
+			}, { mode = mode, buffer = bufnr, noremap = true, silent = true })
 		end
 	end
 

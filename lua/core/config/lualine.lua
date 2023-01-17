@@ -11,7 +11,7 @@ local location = {
 
 lualine.setup({
 	options = {
-		globalstatus = false,
+		globalstatus = true,
 		icons_enabled = true,
 		theme = "tokyonight",
 		component_separators = { left = "", right = "" },
