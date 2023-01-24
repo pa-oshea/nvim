@@ -157,15 +157,6 @@ local function load_defaults()
 				end,
 			},
 		},
-		{
-			"BufWritePost",
-			{
-				pattern = { "*.java" },
-				callback = function()
-					local _, _ = pcall(vim.lsp.codelens.refresh)
-				end,
-			},
-		},
 	}
 
 	define_autocmds(definitions)

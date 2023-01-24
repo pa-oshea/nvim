@@ -1,12 +1,13 @@
 return {
-	"sumneko_lua",
+	"bashls",
 	"cssls",
 	"gopls",
 	"html",
-	"tsserver",
-	"pyright",
-	"bashls",
+	"jdtls",
 	"jsonls",
-	"yamlls",
+	"pyright",
 	"rust_analyzer",
+	"sumneko_lua",
+	"tsserver",
+	"yamlls",
 }

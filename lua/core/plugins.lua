@@ -20,6 +20,12 @@ require("lazy").setup({
 			vim.cmd([[colorscheme tokyonight-night]])
 		end,
 	},
+	-- {
+	-- 	"AlexvZyl/nordic.nvim",
+	-- 	config = function()
+	-- 		vim.cmd([[colorscheme nordic]])
+	-- 	end,
+	-- },
 
 	-- https://github.com/folke/which-key.nvim
 	{
@@ -255,4 +261,6 @@ require("lazy").setup({
 	-- 		require("shade").setup()
 	-- 	end,
 	-- },
+
+	{ "mfussenegger/nvim-jdtls" },
 })

@@ -10,6 +10,13 @@ M.capabilities.textDocument.foldingRange = {
 	dynamicRegistration = false,
 	lineFoldingOnly = true,
 }
+M.capabilities.textDocument.completion.completionItem.resolveSupport = {
+	properties = {
+		"documentation",
+		"detail",
+		"additionalTextEdits",
+	},
+}
 M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
 
 M.setup = function()
@@ -58,17 +65,30 @@ local function lsp_keymaps(bufnr)
 	vim.keymap.set("n", "<leader>lq", vim.diagnostic.setloclist, bufopts)
 end
 
-M.on_attach = function(client, bufnr)
-	if client.name == "tsserver" then
-		client.server_capabilities.documentFormattingProvider = false
-	end
+local lsp_formatting = function(bufnr)
+	vim.lsp.buf.format({
+		filter = function(client)
+			return client.name == "null-ls"
+		end,
+		buffer = bufnr,
+	})
+end
 
-	if client.name == "sumneko_lua" then
-		client.server_capabilities.documentFormattingProvider = false
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
+M.on_attach = function(client, bufnr)
+	if client.supports_method("textDocument/formatting") then
+		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			group = augroup,
+			buffer = bufnr,
+			callback = function()
+				lsp_formatting(bufnr)
+			end,
+		})
 	end
 
 	if client.name == "gopls" then
-		client.server_capabilities.documentFormattingProvider = false
 		vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 	end
 
