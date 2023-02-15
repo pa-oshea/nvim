@@ -3,11 +3,10 @@ return {
 	"cssls",
 	"gopls",
 	"html",
-	"jdtls",
 	"jsonls",
 	"pyright",
 	"rust_analyzer",
-	"sumneko_lua",
+	"lua_ls",
 	"tsserver",
 	"yamlls",
 }

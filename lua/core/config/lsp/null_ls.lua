@@ -37,7 +37,7 @@ null_ls.setup({
 		formatting.stylua,
 		formatting.gofumpt,
 		formatting.goimports,
-		formatting.google_java_format,
+		-- formatting.google_java_format,
 		code_actions.eslint_d.with({
 			condition = has_eslint_config,
 			prefer_local = "node_modules/.bin",

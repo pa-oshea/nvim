@@ -86,6 +86,10 @@ local config = {
 						name = "JavaSE-17",
 						path = "~/.sdkman/candidates/java/17.0.5-tem",
 					},
+					{
+						name = "JavaSE-17",
+						path = "~/.sdkman/candidates/java/17.0.6-amzn",
+					},
 				},
 			},
 			maven = { downloadSources = true },
@@ -93,7 +97,12 @@ local config = {
 			referencesCodeLens = { enabled = true },
 			references = { includeDecompiledSources = true },
 			inlayHints = { parameterNames = { enabled = "all" } },
-			format = { enabled = false },
+			format = {
+				settings = {
+					url = "~/.local/share/eclipse/eclipse-java-google-style.xml",
+					profile = "GoogleStyle",
+				},
+			},
 		},
 		signatureHelp = { enabled = true },
 		completion = {
@@ -187,7 +196,7 @@ local vopts = {
 }
 
 local mappings = {
-	C = {
+	c = {
 		name = "Java",
 		o = { "<Cmd>lua require'jdtls'.organize_imports()<CR>", "Organize Imports" },
 		v = { "<Cmd>lua require('jdtls').extract_variable()<CR>", "Extract Variable" },
@@ -199,7 +208,7 @@ local mappings = {
 }
 
 local vmappings = {
-	C = {
+	c = {
 		name = "Java",
 		v = { "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>", "Extract Variable" },
 		c = { "<Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>", "Extract Constant" },
