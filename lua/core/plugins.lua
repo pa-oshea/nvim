@@ -12,14 +12,27 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+	-- {
+	-- 	"folke/tokyonight.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		vim.cmd([[colorscheme tokyonight-night]])
+	-- 	end,
+	-- },
 	{
-		"folke/tokyonight.nvim",
+		"neanias/everforest-nvim",
 		lazy = false,
-		priority = 1000,
+		priority = 1000, -- make sure to load this before all the other start plugins
+		-- Optional; default configuration will be used if setup isn't called.
 		config = function()
-			vim.cmd([[colorscheme tokyonight-night]])
+			require("everforest").setup({
+				-- Your config here
+			})
+			vim.cmd([[colorscheme everforest]])
 		end,
 	},
+	{ "fladson/vim-kitty" },
 	-- {
 	-- 	"AlexvZyl/nordic.nvim",
 	-- 	config = function()
@@ -59,6 +72,7 @@ require("lazy").setup({
 		config = function()
 			require("fidget").setup()
 		end,
+		tag = "legacy",
 	},
 
 	{ "folke/neodev.nvim" },
@@ -263,4 +277,12 @@ require("lazy").setup({
 	-- },
 
 	{ "mfussenegger/nvim-jdtls" },
+	{
+		"Wansmer/treesj",
+		keys = { "<space>m", "<space>j", "<space>k" },
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		config = function()
+			require("treesj").setup({})
+		end,
+	},
 })

@@ -34,6 +34,7 @@ null_ls.setup({
 				PRETTIERD_DEFAULT_CONFIG = vim.fn.getcwd() .. "/.prettierrc",
 			},
 		}),
+		formatting.rustfmt,
 		formatting.stylua,
 		formatting.gofumpt,
 		formatting.goimports,
