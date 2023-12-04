@@ -4,9 +4,9 @@ return {
 	"gopls",
 	"html",
 	"jsonls",
-	"pyright",
-	"rust_analyzer",
 	"lua_ls",
 	"tsserver",
+	"eslint-lsp",
+	"prettier",
 	"yamlls",
 }

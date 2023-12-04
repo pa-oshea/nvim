@@ -20,16 +20,24 @@ require("lazy").setup({
 	-- 		vim.cmd([[colorscheme tokyonight-night]])
 	-- 	end,
 	-- },
+	-- {
+	-- 	"neanias/everforest-nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000, -- make sure to load this before all the other start plugins
+	-- 	-- Optional; default configuration will be used if setup isn't called.
+	-- 	config = function()
+	-- 		require("everforest").setup({
+	-- 			-- Your config here
+	-- 		})
+	-- 		vim.cmd([[colorscheme everforest]])
+	-- 	end,
+	-- },
 	{
-		"neanias/everforest-nvim",
-		lazy = false,
-		priority = 1000, -- make sure to load this before all the other start plugins
-		-- Optional; default configuration will be used if setup isn't called.
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
 		config = function()
-			require("everforest").setup({
-				-- Your config here
-			})
-			vim.cmd([[colorscheme everforest]])
+			vim.cmd([[colorscheme catppuccin-frappe]])
 		end,
 	},
 	{ "fladson/vim-kitty" },
@@ -285,4 +293,11 @@ require("lazy").setup({
 			require("treesj").setup({})
 		end,
 	},
+	-- {
+	-- 	"m4xshen/hardtime.nvim",
+	-- 	dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+	-- 	config = function()
+	-- 		require("hardtime").setup()
+	-- 	end,
+	-- },
 })
