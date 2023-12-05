@@ -6,7 +6,5 @@ return {
 	"jsonls",
 	"lua_ls",
 	"tsserver",
-	"eslint-lsp",
-	"prettier",
 	"yamlls",
 }

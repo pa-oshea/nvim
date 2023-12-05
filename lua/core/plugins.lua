@@ -12,41 +12,15 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	-- {
-	-- 	"folke/tokyonight.nvim",
-	-- 	lazy = false,
-	-- 	priority = 1000,
-	-- 	config = function()
-	-- 		vim.cmd([[colorscheme tokyonight-night]])
-	-- 	end,
-	-- },
-	-- {
-	-- 	"neanias/everforest-nvim",
-	-- 	lazy = false,
-	-- 	priority = 1000, -- make sure to load this before all the other start plugins
-	-- 	-- Optional; default configuration will be used if setup isn't called.
-	-- 	config = function()
-	-- 		require("everforest").setup({
-	-- 			-- Your config here
-	-- 		})
-	-- 		vim.cmd([[colorscheme everforest]])
-	-- 	end,
-	-- },
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
 		priority = 1000,
 		config = function()
-			vim.cmd([[colorscheme catppuccin-frappe]])
+			vim.cmd([[colorscheme catppuccin-mocha]])
 		end,
 	},
 	{ "fladson/vim-kitty" },
-	-- {
-	-- 	"AlexvZyl/nordic.nvim",
-	-- 	config = function()
-	-- 		vim.cmd([[colorscheme nordic]])
-	-- 	end,
-	-- },
 
 	-- https://github.com/folke/which-key.nvim
 	{
