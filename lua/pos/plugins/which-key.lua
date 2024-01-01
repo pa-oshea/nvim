@@ -28,10 +28,9 @@ return {
 			[";"] = { "<cmd>Alpha<CR>", "Dashboard" },
 			["w"] = { "<cmd>w!<CR>", "Save" },
 			["q"] = { "<cmd>confirm q<CR>", "Quit" },
-			["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment toggle current line" },
 			["f"] = { "<cmd>Telescope find_files<cr>", "Find file" },
 			["u"] = { "<cmd>UndotreeToggle<cr>", "Undo tree" },
-			["e"] = { "<cmd>Neotree toggle<CR>", "Explorer" },
+			["e"] = { "<cmd>Oil<CR>", "Explorer" },
 			["p"] = { '"_dP', "Paste wihout changing copy register" },
 			["r"] = { [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "Replace word under cursor" },
 			b = {

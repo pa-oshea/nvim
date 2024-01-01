@@ -1,5 +1,5 @@
 return {
-	"jose-elias-alvarez/null-ls.nvim",
+	"nvimtools/none-ls.nvim",
 	dependencies = {
 		"jay-babu/mason-null-ls.nvim",
 	},
@@ -9,7 +9,6 @@ return {
 		local sources = {
 			formatting.stylua,
 			formatting.prettier,
-			formatting.isort,
 			formatting.eslint_d,
 		}
 		null_ls.setup({
