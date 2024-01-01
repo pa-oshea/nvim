@@ -69,7 +69,7 @@ return {
 				find_files = {
 					theme = "dropdown",
 					previewer = false,
-					hidden = true,
+					hidden = false,
 				},
 				commands = {
 					theme = "dropdown",
