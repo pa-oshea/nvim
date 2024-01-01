@@ -60,12 +60,12 @@ require("lazy").setup({
 	{ "folke/neodev.nvim" },
 
 	-- https://github.com/SmiteshP/nvim-navic
-	{
-		"SmiteshP/nvim-navic",
-		config = function()
-			require("core.config.lsp.navic").setup()
-		end,
-	},
+	-- {
+	-- 	"SmiteshP/nvim-navic",
+	-- 	config = function()
+	-- 		require("core.config.lsp.navic").setup()
+	-- 	end,
+	-- },
 	-- A fancy, configurable, notification manager for NeoVim
 	-- https://github.com/rcarriga/nvim-notify
 	{ "rcarriga/nvim-notify" },
@@ -180,14 +180,6 @@ require("lazy").setup({
 
 	-- https://github.com/RRethy/vim-illuminate
 	{ "RRethy/vim-illuminate" },
-
-	-- https://github.com/folke/zen-mode.nvim
-	{
-		"folke/zen-mode.nvim",
-		config = function()
-			require("zen-mode").setup()
-		end,
-	},
 
 	-- Folding https://github.com/kevinhwang91/nvim-ufo
 	{

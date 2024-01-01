@@ -4,7 +4,7 @@ vim.g.maplocalleader = " "
 
 -- Move stuff
 vim.keymap.set("n", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("n", "K", ":m '<-2<CR>gv=gv")
+-- vim.keymap.set("n", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
@@ -12,7 +12,7 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<cr>")
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux new tmux-sessionizer<cr>")
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 -- Stay in indent mode
