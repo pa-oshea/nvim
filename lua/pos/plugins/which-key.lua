@@ -150,6 +150,18 @@ return {
 				r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
 				R = { "<cmd>Telescope registers<cr>", "Registers" },
 				t = { "<cmd>Telescope live_grep<cr>", "Text" },
+				w = {
+					function()
+						require("telescope.builtin").grep_string({ search = vim.fn.expand("<cword>") })
+					end,
+					"Search word under cursor",
+				},
+				W = {
+					function()
+						require("telescope.builtin").grep_string({ search = vim.fn.expand("<cWORD>") })
+					end,
+					"Search full word under cursor",
+				},
 				k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 				p = { "<cmd>Telescope projects theme=dropdown previewer=false<cr>", "Projects" },
 				n = {
