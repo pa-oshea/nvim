@@ -30,10 +30,10 @@ return {
 			["q"] = { "<cmd>confirm q<CR>", "Quit" },
 			["f"] = { "<cmd>Telescope find_files<cr>", "Find file" },
 			["u"] = { "<cmd>UndotreeToggle<cr>", "Undo tree" },
-			["e"] = { "<cmd>Oil<CR>", "Explorer" },
 			["p"] = { '"_dP', "Paste wihout changing copy register" },
 			["r"] = { [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "Replace word under cursor" },
 			b = {
+				-- TODO: Better buffer handling
 				name = "Buffers",
 				j = { "<cmd>BufferLinePick<cr>", "Jump" },
 				f = { "<cmd>Telescope buffers<cr>", "Find" },
@@ -88,8 +88,18 @@ return {
 				q = { "<cmd>lua require'dap'.terminate()<cr>", "Quit" },
 				U = { "<cmd>lua require'dapui'.toggle({reset = true})<cr>", "Toggle UI" },
 			},
+			e = {
+				name = "Explorer",
+				e = { "<cmd>Neotree toggle<cr>", "Neo tree" },
+				o = { "<cmd>Oil<CR>", "Oil" },
+				b = {
+					"<cmd>Neotree source=buffers position=right toggle<cr>",
+					"Neo tree buffers",
+				},
+			},
 			g = {
 				name = "Git",
+				-- TODO: sort git stuff
 				j = { "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>", "Next Hunk" },
 				k = { "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>", "Prev Hunk" },
 				l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
@@ -117,6 +127,7 @@ return {
 				},
 			},
 			l = {
+				-- TODO: better key map, and code action shit
 				name = "Lsp",
 				f = {
 					function()
@@ -177,6 +188,11 @@ return {
 				f = { toggle_float, "Floating Terminal" },
 				l = { toggle_lazygit, "LazyGit" },
 			},
+			T = {
+				name = "Treesitter",
+				i = { ":TSConfigInfo<cr>", "Info" },
+				u = { ":TSUpdate<cr>", "Update" },
+			},
 			x = {
 				name = "Trouble",
 				x = { "<cmd>TroubleToggle<cr>", "Toggle trouble" },
@@ -185,10 +201,9 @@ return {
 				t = { "<cmd>TodoTrouble<cr>", "Todo Trouble" },
 				T = { "<cmd>TodoTelescope<cr>", "Todo Telescope" },
 			},
-			T = {
-				name = "Treesitter",
-				i = { ":TSConfigInfo<cr>", "Info" },
-				u = { ":TSUpdate<cr>", "Update" },
+			z = {
+				name = "Zen",
+				z = { "<cmd>ZenMode<cr>", "Zen mode" },
 			},
 		}
 

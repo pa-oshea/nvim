@@ -15,7 +15,21 @@ return {
 	config = function()
 		local treesitter = require("nvim-treesitter.configs")
 		treesitter.setup({
-			ensure_installed = "all",
+			ensure_install = {
+				"bash",
+				"c",
+				"css",
+				"git_config",
+				"go",
+				"html",
+				"javascript",
+				"json",
+				"lua",
+				"sql",
+				"typescript",
+				"xml",
+				"yaml",
+			},
 			sync_install = false,
 			auto_install = true,
 			highlight = {

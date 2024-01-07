@@ -9,26 +9,7 @@ return {
 		end,
 	},
 	{ "fladson/vim-kitty" },
-	{
-		"folke/lsp-colors.nvim",
-		config = function()
-			require("lsp-colors").setup()
-		end,
-	},
-	{
-		"j-hui/fidget.nvim",
-		config = function()
-			require("fidget").setup()
-		end,
-		tag = "legacy",
-	},
 	{ "MunifTanjim/nui.nvim" },
-	{
-		"nvim-treesitter/nvim-treesitter-context",
-		config = function()
-			require("treesitter-context").setup()
-		end,
-	},
 	{
 		"kylechui/nvim-surround",
 		config = function()
@@ -48,11 +29,6 @@ return {
 		end,
 	},
 	{ "mbbill/undotree" },
-	{
-		"folke/trouble.nvim",
-		cmd = { "TroubleToggle", "Trouble" },
-		opts = { use_diagnostic_signs = true },
-	},
 	{
 		"norcalli/nvim-colorizer.lua",
 		config = function()
@@ -84,4 +60,44 @@ return {
 			})
 		end,
 	},
+
+	-- LSP
+	{
+		"folke/lsp-colors.nvim",
+		config = function()
+			require("lsp-colors").setup()
+		end,
+	},
+	{
+		"j-hui/fidget.nvim",
+		config = function()
+			require("fidget").setup()
+		end,
+		tag = "legacy",
+	},
+	{
+		"folke/trouble.nvim",
+		cmd = { "TroubleToggle", "Trouble" },
+		opts = { use_diagnostic_signs = true },
+	},
+	{
+		"kosayoda/nvim-lightbulb",
+		config = function()
+			require("nvim-lightbulb").setup({
+				autocmd = { enabled = true },
+			})
+		end,
+	},
+
+	-- Treesitter
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		config = function()
+			require("treesitter-context").setup()
+		end,
+	},
+
+	-- Zen mode
+	{ "folke/zen-mode.nvim" },
+	{ "folke/twilight.nvim" },
 }
