@@ -104,12 +104,13 @@ return {
 				k = { "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>", "Prev Hunk" },
 				l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
 				p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
-				r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
-				R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-				s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
-				u = {
-					"<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
-					"Undo Stage Hunk",
+				s = {
+					name = "stage",
+					h = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
+					j = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
+					u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk" },
+					b = { "<cmd>lua require 'gitsigns'.stage_buffer()<cr>", "Stage buffer" },
+					n = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
 				},
 				o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
 				b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
@@ -124,6 +125,7 @@ return {
 					c = { "<cmd>DiffviewClose<cr>", "Close diff view" },
 					r = { "<cmd>DiffviewRefresh<cr>", "Refresh diff view" },
 					d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Git Diff" },
+					f = { "<cmd>DiffviewFileHistory<cr>", "File history" },
 				},
 			},
 			l = {
@@ -192,6 +194,9 @@ return {
 				name = "Treesitter",
 				i = { ":TSConfigInfo<cr>", "Info" },
 				u = { ":TSUpdate<cr>", "Update" },
+				j = { ":TSJToggle<cr>", "Toggle split join" },
+				k = { ":TSJSplit<cr>", "Treesj split" },
+				l = { ":TSJJoin<cr>", "Treesj join" },
 			},
 			x = {
 				name = "Trouble",
