@@ -1,5 +1,4 @@
 return {
-
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
@@ -35,7 +34,17 @@ return {
 			require("colorizer").setup()
 		end,
 	},
+	-- GIT
 	{ "sindrets/diffview.nvim" },
+	{
+		"NeogitOrg/neogit",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"sindrets/diffview.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+		config = true,
+	},
 	{
 		"stevearc/oil.nvim",
 		opts = {},
@@ -55,7 +64,9 @@ return {
 		"Wansmer/treesj",
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		config = function()
-			require("treesj").setup({})
+			require("treesj").setup({
+				use_default_keymaps = false,
+			})
 		end,
 	},
 
@@ -80,6 +91,7 @@ return {
 	},
 	{
 		"kosayoda/nvim-lightbulb",
+		dependencies = { "neovim/nvim-lspconfig" },
 		config = function()
 			require("nvim-lightbulb").setup({
 				autocmd = { enabled = true },
