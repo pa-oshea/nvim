@@ -14,5 +14,7 @@ return {
 			timeout = 2000,
 			fps = 60,
 		})
+
+		vim.notify = notify
 	end,
 }
