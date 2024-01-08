@@ -12,16 +12,15 @@ return {
 			options = {
 				globalstatus = true,
 				icons_enabled = true,
-				-- theme = "tokyonight",
 				component_separators = { left = "", right = "" },
 				section_separators = { left = "", right = "" },
-				disabled_filetypes = { "alpha", "dashboard" },
+				disabled_filetypes = { "alpha", "dashboard", "telescope" },
 				always_divide_middle = true,
 			},
 			sections = {
 				lualine_a = { "mode" },
 				lualine_b = { "branch" },
-				lualine_c = { "diff" },
+				lualine_c = { "filename", "diff" },
 				lualine_x = { "diagnostics", "filetype" },
 				lualine_y = { location },
 				lualine_z = { "progress" },
