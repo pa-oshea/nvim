@@ -8,11 +8,12 @@ return {
 		end,
 	},
 	{
-		"rose-pine/neovim", name = "rose-pine",
+		"rose-pine/neovim",
+		name = "rose-pine",
 		priority = 1000,
-		config = function ()
+		config = function()
 			-- vim.cmd('colorscheme rose-pine')
-		end
+		end,
 	},
 	{ "fladson/vim-kitty" },
 	{ "MunifTanjim/nui.nvim" },
@@ -117,4 +118,13 @@ return {
 	-- Zen mode
 	{ "folke/zen-mode.nvim" },
 	{ "folke/twilight.nvim" },
+
+	-- Icons
+	{
+		"glepnir/nerdicons.nvim",
+		cmd = "NerdIcons",
+		config = function()
+			require("nerdicons").setup({})
+		end,
+	},
 }

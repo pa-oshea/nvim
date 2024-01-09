@@ -6,3 +6,4 @@ require("pos.core")
 -- TODO: Test out neogit
 -- TODO: Better buffer handling
 -- TODO: Format on save
+-- TODO: snips

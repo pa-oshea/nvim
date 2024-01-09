@@ -19,7 +19,7 @@ return {
 				" " .. " Find project",
 				"<cmd>Telescope projects theme=dropdown previewer=false<cr>"
 			),
-			dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles <CR>"),
+			dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles <CR>"),
 			-- dashboard.button("t", " " .. " Find text", ":Telescope live_grep <CR>"),
 			dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
 			dashboard.button("q", " " .. " Quit", ":qa<CR>"),
