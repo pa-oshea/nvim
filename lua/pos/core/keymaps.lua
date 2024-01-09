@@ -5,8 +5,8 @@ vim.g.maplocalleader = " "
 local map = vim.api.nvim_set_keymap
 
 -- Moving text
-map("n", "J", ":m '>+1<CR>gv=gv", { noremap = true, silent = false })
-map("n", "K", ":m '<-2<CR>gv=gv", { noremap = true, silent = false })
+map("v", "J", ":m '>+1<CR>gv=gv", { noremap = true, silent = false })
+map("v", "K", ":m '<-2<CR>gv=gv", { noremap = true, silent = false })
 
 -- Keep centered when page up and down
 map("n", "<C-d>", "<C-d>zz", { noremap = true, silent = false })
