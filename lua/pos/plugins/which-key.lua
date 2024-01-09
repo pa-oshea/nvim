@@ -32,28 +32,8 @@ return {
 			["r"] = { [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "Replace word under cursor" },
 			b = {
 				name = "Buffers",
-				j = { "<cmd>BufferLinePick<cr>", "Jump" },
-				f = { "<cmd>Telescope buffers<cr>", "Find" },
-				b = { "<cmd>BufferLineCyclePrev<cr>", "Previous" },
-				n = { "<cmd>BufferLineCycleNext<cr>", "Next" },
+				f = { "<cmd>Telescope buffers<cr>", "Find buffers" },
 				W = { "<cmd>noautocmd w<cr>", "Save without formatting (noautocmd)" },
-				e = {
-					"<cmd>BufferLinePickClose<cr>",
-					"Pick which buffer to close",
-				},
-				h = { "<cmd>BufferLineCloseLeft<cr>", "Close all to the left" },
-				l = {
-					"<cmd>BufferLineCloseRight<cr>",
-					"Close all to the right",
-				},
-				D = {
-					"<cmd>BufferLineSortByDirectory<cr>",
-					"Sort by directory",
-				},
-				L = {
-					"<cmd>BufferLineSortByExtension<cr>",
-					"Sort by language",
-				},
 			},
 			-- " Available Debug Adapters:
 			-- "   https://microsoft.github.io/debug-adapter-protocol/implementors/adapters/
@@ -139,13 +119,13 @@ return {
 				a = { "<cmd>Lspsaga code_action<cr>", "Code action" },
 				j = { "<cmd>Lspsaga diagnostic_jump_next<cr>", "Next diagnostic" },
 				k = { "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Previous diagnostic" },
-				r = { vim.lsp.buf.rename, "Rename" },
-				h = { vim.lsp.buf.signature_help, "Signature help" },
+				r = { "<cmd>Lspsaga rename<cr>", "Rename" },
+				R = { "<cmd>Lspsaga finder<cr>", "Find references"},
 				s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document symbols" },
 				S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace symbols" },
-				e = { "<cmd>Telescope quickfix", "Telescope quickfix" },
+				e = { "<cmd>Telescope quickfix<cr>", "Telescope quickfix" },
 				q = { vim.diagnostic.setloclist, "Quickfix" },
-				o = { "<cmd>SymbolsOutline<cr>", "Toggle symbols outline" },
+				o = { "<cmd>Lspsaga outline<cr>", "Toggle symbols outline" },
 			},
 			s = {
 				name = "Search",
