@@ -30,9 +30,18 @@ return {
 		end,
 	},
 	{
-		"simrat39/symbols-outline.nvim",
+		"folke/todo-comments.nvim",
+		cmd = { "TodoTrouble", "TodoTelescope" },
+		event = "BufReadPost",
+		config = true,
+	},
+	{
+		"Wansmer/treesj",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		config = function()
-			require("symbols-outline").setup()
+			require("treesj").setup({
+				use_default_keymaps = false,
+			})
 		end,
 	},
 	{ "mbbill/undotree" },
@@ -52,30 +61,6 @@ return {
 			"nvim-telescope/telescope.nvim",
 		},
 		config = true,
-	},
-	{
-		"stevearc/oil.nvim",
-		opts = {},
-		-- Optional dependencies
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		config = function()
-			require("oil").setup()
-		end,
-	},
-	{
-		"folke/todo-comments.nvim",
-		cmd = { "TodoTrouble", "TodoTelescope" },
-		event = "BufReadPost",
-		config = true,
-	},
-	{
-		"Wansmer/treesj",
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
-		config = function()
-			require("treesj").setup({
-				use_default_keymaps = false,
-			})
-		end,
 	},
 
 	-- LSP
@@ -98,12 +83,11 @@ return {
 		opts = { use_diagnostic_signs = true },
 	},
 	{
-		"kosayoda/nvim-lightbulb",
-		dependencies = { "neovim/nvim-lspconfig" },
-		config = function()
-			require("nvim-lightbulb").setup({
-				autocmd = { enabled = true },
-			})
+		"ray-x/lsp_signature.nvim",
+		event = "VeryLazy",
+		opts = {},
+		config = function(_, opts)
+			require("lsp_signature").setup(opts)
 		end,
 	},
 
