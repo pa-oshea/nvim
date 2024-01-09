@@ -29,6 +29,8 @@ return {
 				"typescript",
 				"xml",
 				"yaml",
+				"markdown",
+				"markdown_inline"
 			},
 			sync_install = false,
 			auto_install = true,
