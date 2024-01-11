@@ -4,7 +4,6 @@ return {
 		require("gitsigns").setup({
 			current_line_blame = true,
 			numhl = true,
-			linehl = true,
 		})
 	end,
 }
