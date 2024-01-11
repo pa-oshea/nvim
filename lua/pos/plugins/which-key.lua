@@ -68,7 +68,6 @@ return {
 			e = {
 				name = "Explorer",
 				e = { "<cmd>Neotree toggle<cr>", "Neo tree" },
-				o = { "<cmd>Oil<CR>", "Oil" },
 				b = {
 					"<cmd>Neotree source=buffers toggle<cr>",
 					"Neo tree buffers",
