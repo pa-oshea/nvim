@@ -13,6 +13,9 @@ return {
 			code_action = {
 				extend_gitsigns = true,
 			},
+			symbol_in_winbar = {
+				enable = false
+			}
 		})
 	end,
 }
