@@ -15,7 +15,7 @@ return {
 	config = function()
 		local treesitter = require("nvim-treesitter.configs")
 		treesitter.setup({
-			ensure_install = {
+			ensure_installed = {
 				"bash",
 				"c",
 				"css",
