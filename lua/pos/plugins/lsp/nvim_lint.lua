@@ -12,15 +12,6 @@ return {
 			svelte = { { "eslint_d", "eslint" } },
 		}
 
-		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
-
-		vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
-			group = lint_augroup,
-			callback = function()
-				lint.try_lint()
-			end,
-		})
-
 		vim.keymap.set("n", "<leader>lx", function()
 			lint.try_lint()
 		end, { desc = "Run linter" })
