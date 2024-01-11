@@ -1,17 +1,21 @@
 return {
 	"nvimtools/none-ls.nvim",
-	dependencies = {
-		"jay-babu/mason-null-ls.nvim",
-	},
+	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local null_ls = require("null-ls")
-		local formatting = null_ls.builtins.formatting
+		local null_ls_utils = require("null-ls.utils")
+		local code_actions = null_ls.builtins.code_actions
 		local sources = {
-			formatting.stylua,
-			formatting.prettier,
-			formatting.eslint_d,
+			code_actions.eslint_d.with({
+				condition = function(utils)
+					utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs" })
+				end,
+			}),
+			code_actions.gomodifytags,
+			code_actions.impl,
 		}
 		null_ls.setup({
+			root_dir = null_ls_utils.root_pattern(".null-ls-root", "Makefile", ".git", "package.json"),
 			sources = sources,
 		})
 	end,

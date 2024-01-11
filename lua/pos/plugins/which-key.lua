@@ -107,7 +107,7 @@ return {
 				name = "Lsp",
 				f = {
 					function()
-						vim.lsp.buf.format({ async = true })
+						require("conform").format()
 					end,
 					"Format buffer",
 				},
@@ -119,7 +119,7 @@ return {
 				j = { "<cmd>Lspsaga diagnostic_jump_next<cr>", "Next diagnostic" },
 				k = { "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Previous diagnostic" },
 				r = { "<cmd>Lspsaga rename<cr>", "Rename" },
-				R = { "<cmd>Lspsaga finder<cr>", "Find references"},
+				R = { "<cmd>Lspsaga finder<cr>", "Find references" },
 				s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document symbols" },
 				S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace symbols" },
 				e = { "<cmd>Telescope quickfix<cr>", "Telescope quickfix" },
