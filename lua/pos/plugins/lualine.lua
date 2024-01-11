@@ -3,10 +3,6 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
 		local lualine = require("lualine")
-		local location = {
-			"location",
-			padding = 0,
-		}
 
 		lualine.setup({
 			options = {
@@ -20,10 +16,48 @@ return {
 			sections = {
 				lualine_a = { "mode" },
 				lualine_b = { "branch" },
-				lualine_c = { "filename", "diff" },
+				lualine_c = { "diff" },
 				lualine_x = { "diagnostics", "filetype" },
-				lualine_y = { location },
+				lualine_y = { "tabs" },
 				lualine_z = { "progress" },
+			},
+			winbar = {
+				lualine_a = {
+					{
+						"filename",
+						show_modified_status = true,
+						use_mode_colors = true,
+						symbols = {
+							modified = " ●",
+							alternate_file = "",
+							directory = "",
+						},
+					},
+				},
+				lualine_b = {},
+				lualine_c = {},
+				lualine_x = {},
+				lualine_y = {},
+				lualine_z = {},
+			},
+			inactive_winbar = {
+				lualine_a = {
+					{
+						"filename",
+						show_modified_status = true,
+						use_mode_colors = true,
+						symbols = {
+							modified = " ●",
+							alternate_file = "",
+							directory = "",
+						},
+					},
+				},
+				lualine_b = {},
+				lualine_c = {},
+				lualine_x = {},
+				lualine_y = {},
+				lualine_z = {},
 			},
 		})
 	end,
