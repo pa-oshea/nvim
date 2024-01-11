@@ -25,20 +25,8 @@ return {
 		config = function()
 			local lspconfig = require("lspconfig")
 			local cmp_nvim_lsp = require("cmp_nvim_lsp")
-			local wk = require("which-key")
 			local capabilities = cmp_nvim_lsp.default_capabilities()
 
-			local register_keys = function(keys)
-				local opts = {
-					mode = "n", -- NORMAL mode
-					prefix = "<leader>",
-					buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-					silent = true, -- use `silent` when creating keymaps
-					noremap = true, -- use `noremap` when creating keymaps
-					nowait = true, -- use `nowait` when creating keymaps
-				}
-				wk.register(keys, opts)
-			end
 			require("mason-lspconfig").setup({
 				-- auto installation
 				automatic_installation = true,
@@ -67,21 +55,6 @@ return {
 										range = true,
 									}
 								end
-
-								register_keys({
-									c = {
-										name = "Go",
-										i = { "<cmd>GoInstallDeps<Cr>", "Install Go Dependencies" },
-										f = { "<cmd>GoMod tidy<cr>", "Tidy" },
-										a = { "<cmd>GoTestAdd<Cr>", "Add Test" },
-										A = { "<cmd>GoTestsAll<Cr>", "Add All Tests" },
-										e = { "<cmd>GoTestsExp<Cr>", "Add Exported Tests" },
-										g = { "<cmd>GoGenerate<Cr>", "Go Generate" },
-										G = { "<cmd>GoGenerate %<Cr>", "Go Generate File" },
-										c = { "<cmd>GoCmt<Cr>", "Generate Comment" },
-										t = { "<cmd>lua require('dap-go').debug_test()<cr>", "Debug Test" },
-									},
-								})
 							end
 						end,
 						settings = {
@@ -127,37 +100,6 @@ return {
 				["tsserver"] = function()
 					lspconfig.tsserver.setup({
 						capabilities = capabilities,
-						on_attach = function()
-							register_keys({
-								c = {
-									name = "Typescript",
-									o = {
-										function()
-											vim.lsp.buf.code_action({
-												apply = true,
-												context = {
-													only = { "source.organizeImports.ts" },
-													diagnostics = {},
-												},
-											})
-										end,
-										"Organize Imports",
-									},
-									r = {
-										function()
-											vim.lsp.buf.code_action({
-												apply = true,
-												context = {
-													only = { "source.removeUnused.ts" },
-													diagnostics = {},
-												},
-											})
-										end,
-										"Remove Unused Imports",
-									},
-								},
-							})
-						end,
 						settings = {
 							typescript = {
 								format = {
