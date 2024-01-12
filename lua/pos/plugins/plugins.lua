@@ -15,6 +15,12 @@ return {
 			-- vim.cmd('colorscheme rose-pine')
 		end,
 	},
+	{
+		"nvim-tree/nvim-web-devicons",
+		config = function()
+			require("nvim-web-devicons").setup()
+		end,
+	},
 	{ "fladson/vim-kitty" },
 	{ "MunifTanjim/nui.nvim" },
 	{
