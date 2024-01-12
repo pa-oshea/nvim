@@ -6,6 +6,7 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
+		"VidocqH/lsp-lens.nvim",
 	},
 	config = function()
 		local lspui = require("lspconfig.ui.windows")
@@ -28,6 +29,7 @@ return {
 		--LspInfo Borders
 		lspui.default_options.border = "double"
 
+		require("lsp-lens").setup()
 		-- Use LspAttach autocommand to only map the following keys
 		-- after the language server attaches to the current buffer
 		vim.api.nvim_create_autocmd("LspAttach", {
