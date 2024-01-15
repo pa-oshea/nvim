@@ -24,6 +24,7 @@ return {
 				"html",
 				"javascript",
 				"json",
+				"jsdoc",
 				"lua",
 				"sql",
 				"typescript",
