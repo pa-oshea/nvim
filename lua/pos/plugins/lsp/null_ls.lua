@@ -11,8 +11,6 @@ return {
 					utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs" })
 				end,
 			}),
-			code_actions.gomodifytags,
-			code_actions.impl,
 		}
 		null_ls.setup({
 			root_dir = null_ls_utils.root_pattern(".null-ls-root", "Makefile", ".git", "package.json"),
