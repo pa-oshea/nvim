@@ -34,10 +34,10 @@ return {
 				entry_prefix = "  ",
 				initial_mode = "insert",
 				selection_strategy = "reset",
-				sorting_strategy = "descending",
+				sorting_strategy = "ascending",
 				layout_strategy = "horizontal",
 				file_sorter = require("telescope.sorters").get_fuzzy_file,
-				file_ignore_patterns = {},
+				file_ignore_patterns = { ".git" },
 				generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
 				path_display = {},
 				winblend = 0,
@@ -68,22 +68,8 @@ return {
 			pickers = {
 				find_files = {
 					theme = "dropdown",
-					previewer = false,
-					hidden = false,
-				},
-				commands = {
-					theme = "dropdown",
-				},
-				help_tags = {
-					theme = "dropdown",
 				},
 				highlights = {
-					theme = "dropdown",
-				},
-				man_pages = {
-					theme = "dropdown",
-				},
-				oldfiles = {
 					theme = "dropdown",
 				},
 				registers = {
@@ -96,7 +82,6 @@ return {
 					theme = "dropdown",
 				},
 				live_grep = {
-					theme = "dropdown",
 					--@usage don't include the filename in the search results
 					only_sort_text = true,
 				},
@@ -105,8 +90,6 @@ return {
 					only_sort_text = true,
 				},
 				buffers = {
-					theme = "dropdown",
-					previewer = false,
 					initial_mode = "normal",
 					mappings = {
 						i = {
