@@ -11,15 +11,11 @@ return {
 	{ "MunifTanjim/nui.nvim" },
 	{
 		"kylechui/nvim-surround",
-		config = function()
-			require("nvim-surround").setup()
-		end,
+		config = true,
 	},
 	{
 		"terrortylor/nvim-comment",
-		config = function()
-			require("nvim_comment").setup()
-		end,
+		config = true,
 	},
 	{
 		"folke/todo-comments.nvim",
@@ -30,18 +26,12 @@ return {
 	{
 		"Wansmer/treesj",
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
-		config = function()
-			require("treesj").setup({
-				use_default_keymaps = false,
-			})
-		end,
+		opt = { use_default_keymaps = false },
 	},
-	{ "mbbill/undotree" },
+	{ "mbbill/undotree", cmd = { "Undotree", "UndotreeToggle" } },
 	{
 		"norcalli/nvim-colorizer.lua",
-		config = function()
-			require("colorizer").setup()
-		end,
+		config = true,
 	},
 	-- GIT
 	{ "sindrets/diffview.nvim" },
@@ -58,15 +48,11 @@ return {
 	-- LSP
 	{
 		"folke/lsp-colors.nvim",
-		config = function()
-			require("lsp-colors").setup()
-		end,
+		config = true,
 	},
 	{
 		"j-hui/fidget.nvim",
-		config = function()
-			require("fidget").setup()
-		end,
+		config = true,
 		tag = "legacy",
 	},
 	{
@@ -78,17 +64,13 @@ return {
 		"ray-x/lsp_signature.nvim",
 		event = "VeryLazy",
 		opts = {},
-		config = function(_, opts)
-			require("lsp_signature").setup(opts)
-		end,
+		config = true,
 	},
 
 	-- Treesitter
 	{
 		"nvim-treesitter/nvim-treesitter-context",
-		config = function()
-			require("treesitter-context").setup()
-		end,
+		config = true,
 	},
 
 	-- Zen mode
@@ -99,8 +81,6 @@ return {
 	{
 		"glepnir/nerdicons.nvim",
 		cmd = "NerdIcons",
-		config = function()
-			require("nerdicons").setup({})
-		end,
+		config = true,
 	},
 }
