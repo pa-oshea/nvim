@@ -1,5 +1,6 @@
 return {
 	"nvim-neo-tree/neo-tree.nvim",
+	cmd = "Neotree",
 	config = function()
 		local neo_tree = require("neo-tree")
 		vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
