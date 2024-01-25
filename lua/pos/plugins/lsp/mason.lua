@@ -161,7 +161,7 @@ return {
 				ensure_installed = {
 					"bashls",
 					"cssls",
-					"delve",
+					{ "delve", auto_update = false },
 					"eslint_d",
 					"gopls",
 					"goimports",
