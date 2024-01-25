@@ -15,7 +15,9 @@ return {
 	},
 	{
 		"terrortylor/nvim-comment",
-		config = true,
+		config = function()
+			require("nvim_comment").setup()
+		end,
 	},
 	{
 		"folke/todo-comments.nvim",
@@ -82,5 +84,11 @@ return {
 		"glepnir/nerdicons.nvim",
 		cmd = "NerdIcons",
 		config = true,
+	},
+	{
+		"danymat/neogen",
+		dependencies = "nvim-treesitter/nvim-treesitter",
+		config = true,
+		version = "*",
 	},
 }
