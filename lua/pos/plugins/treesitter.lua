@@ -5,7 +5,6 @@ return {
 		"JoosepAlviste/nvim-ts-context-commentstring",
 		"windwp/nvim-ts-autotag",
 		"hiphish/rainbow-delimiters.nvim",
-		"windwp/nvim-autopairs",
 		"nvim-treesitter/nvim-treesitter-textobjects",
 	},
 
@@ -40,9 +39,6 @@ return {
 				additional_vim_regex_highlighting = false,
 			},
 			autotag = {
-				enable = true,
-			},
-			autopairs = {
 				enable = true,
 			},
 			rainbow = {
