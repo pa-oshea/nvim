@@ -66,9 +66,6 @@ return {
 				},
 			},
 			pickers = {
-				find_files = {
-					theme = "dropdown",
-				},
 				highlights = {
 					theme = "dropdown",
 				},
@@ -90,6 +87,7 @@ return {
 					only_sort_text = true,
 				},
 				buffers = {
+					theme = "dropdown",
 					initial_mode = "normal",
 					mappings = {
 						i = {
