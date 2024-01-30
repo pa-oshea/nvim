@@ -2,20 +2,18 @@ return {
 	{
 		"williamboman/mason.nvim",
 		cmd = "Mason",
-		config = function()
-			require("mason").setup({
-				ui = {
-					icons = {
-						package_installed = "✓",
-						package_pending = "➜",
-						package_uninstalled = "✗",
-					},
-					border = "double",
-					width = 0.8,
-					height = 0.8,
+		opts = {
+			ui = {
+				icons = {
+					package_installed = "✓",
+					package_pending = "➜",
+					package_uninstalled = "✗",
 				},
-			})
-		end,
+				border = "double",
+				width = 0.8,
+				height = 0.8,
+			},
+		},
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
@@ -156,39 +154,37 @@ return {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 		},
-		config = function()
-			require("mason-tool-installer").setup({
-				ensure_installed = {
-					"bashls",
-					"cssls",
-					{ "delve", auto_update = false },
-					"eslint_d",
-					"gopls",
-					"goimports",
-					"gofumpt",
-					"golangci-lint",
-					"gomodifytags",
-					"html-lsp",
-					"impl",
-					"java-test",
-					"java-debug-adapter",
-					"jdtls",
-					"json-lsp",
-					"js-debug-adapter",
-					"lua_ls",
-					"marksman",
-					"node-debug2-adapter",
-					"prettierd",
-					"stylua",
-					"tsserver",
-					"tailwindcss-language-server",
-					"vimls",
-				},
-				auto_update = true,
-				run_on_start = true,
-				start_delay = 3000, -- 3 second delay
-				debounce_hours = 5, -- at least 5 hours between attempts to install/update
-			})
-		end,
+		opts = {
+			ensure_installed = {
+				"bashls",
+				"cssls",
+				{ "delve", auto_update = false },
+				"eslint_d",
+				"gopls",
+				"goimports",
+				"gofumpt",
+				"golangci-lint",
+				"gomodifytags",
+				"html-lsp",
+				"impl",
+				"java-test",
+				"java-debug-adapter",
+				"jdtls",
+				"json-lsp",
+				"js-debug-adapter",
+				"lua_ls",
+				"marksman",
+				"node-debug2-adapter",
+				"prettierd",
+				"stylua",
+				"tsserver",
+				"tailwindcss-language-server",
+				"vimls",
+			},
+			auto_update = true,
+			run_on_start = true,
+			start_delay = 3000, -- 3 second delay
+			debounce_hours = 5, -- at least 5 hours between attempts to install/update
+		},
 	},
 }
