@@ -19,7 +19,7 @@ return {
 		local which_key = require("which-key")
 		which_key.setup({
 			window = {
-				border = "double",
+				border = "single", -- none, single, double, shadow
 			},
 		})
 

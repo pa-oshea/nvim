@@ -55,7 +55,14 @@ return {
 			end
 		end,
 	},
-	{ "jayp0521/mason-nvim-dap.nvim", dependencies = "mfussenegger/nvim-dap", config = true },
+	{
+		"jayp0521/mason-nvim-dap.nvim",
+		dependencies = {
+			"mfussenegger/nvim-dap",
+			"williamboman/mason.nvim",
+		},
+		config = true,
+	},
 	{
 		"mfussenegger/nvim-dap",
 		init = function()
