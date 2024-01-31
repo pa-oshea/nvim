@@ -7,6 +7,9 @@ return {
 	config = function()
 		local lspsaga = require("lspsaga")
 		lspsaga.setup({
+			ui = {
+				code_action = "󰌵",
+			},
 			outline = {
 				close_after_jump = true,
 			},
@@ -14,8 +17,11 @@ return {
 				extend_gitsigns = true,
 			},
 			symbol_in_winbar = {
-				enable = false
-			}
+				enable = false,
+			},
+			light_blub = {
+				virtual_text = false,
+			},
 		})
 	end,
 }
