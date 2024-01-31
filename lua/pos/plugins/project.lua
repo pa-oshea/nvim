@@ -1,7 +1,5 @@
 return {
-
 	"ahmedkhalf/project.nvim",
-	enabled = false,
 	config = function()
 		local project = require("project_nvim")
 
