@@ -7,6 +7,8 @@ return {
 			vim.cmd([[colorscheme catppuccin-mocha]])
 		end,
 	},
+	{ "stevearc/oil.nvim", config = true },
+	{ "nvim-lua/plenary.nvim" },
 	{ "fladson/vim-kitty" },
 	{ "MunifTanjim/nui.nvim" },
 	{
