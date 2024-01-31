@@ -65,6 +65,14 @@ return {
 				s = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
 				q = { "<cmd>lua require'dap'.terminate()<cr>", "Quit" },
 				U = { "<cmd>lua require'dapui'.toggle({reset = true})<cr>", "Toggle UI" },
+				w = {
+					function()
+						local widgets = require("dap.ui.widgets")
+						local sidebar = widgets.sidebar(widgets.scopes)
+						sidebar.open()
+					end,
+					"Open debugging sidebar",
+				},
 			},
 			e = {
 				name = "Explorer",
