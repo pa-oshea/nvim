@@ -165,6 +165,7 @@ return {
 				"gofumpt",
 				"golangci-lint",
 				"gomodifytags",
+				"gotests",
 				"html-lsp",
 				"impl",
 				"java-test",
