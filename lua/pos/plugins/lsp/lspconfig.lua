@@ -9,6 +9,9 @@ return {
 		"VidocqH/lsp-lens.nvim",
 	},
 	config = function()
+		require("neodev").setup({
+			library = { plugins = { "nvim-dap-ui" }, types = true },
+		})
 		local lspui = require("lspconfig.ui.windows")
 
 		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }

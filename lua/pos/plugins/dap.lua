@@ -20,18 +20,15 @@ return {
 				layouts = {
 					{
 						elements = {
-							{ id = "scopes", size = 0.33 },
-							{ id = "breakpoints", size = 0.17 },
-							{ id = "stacks", size = 0.25 },
-							{ id = "watches", size = 0.25 },
+							{ id = "scopes", size = 1 },
 						},
 						size = 0.33,
-						position = "right",
+						position = "left",
 					},
 					{
 						elements = {
-							{ id = "repl", size = 0.45 },
-							{ id = "console", size = 0.55 },
+							{ id = "stacks", size = 0.60 },
+							{ id = "breakpoints", size = 0.40 },
 						},
 						size = 0.27,
 						position = "bottom",
@@ -46,11 +43,18 @@ return {
 					},
 				},
 			})
-			dap.listeners.before.event_terminated["dapui_config"] = function()
+			dap.listeners.before.attach.dapui_config = function()
+				dapui.open()
+			end
+
+			dap.listeners.before.launch.dapui_config = function()
+				dapui.open()
+			end
+			dap.listeners.before.event_terminated.dapui_config = function()
 				dapui.close()
 			end
 
-			dap.listeners.before.event_exited["dapui_config"] = function()
+			dap.listeners.before.event_exited.dapui_config = function()
 				dapui.close()
 			end
 		end,
