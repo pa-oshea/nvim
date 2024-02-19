@@ -3,7 +3,7 @@ return {
 	config = function()
 		local illuminate = require("illuminate")
 
-		vim.g.Illuminate_ftblacklist = { "alpha", "NvimTree" }
+		vim.g.Illuminate_ftblacklist = { "alpha", "NvimTree", "dashboard" }
 		vim.api.nvim_set_keymap(
 			"n",
 			"<a-n>",
@@ -28,6 +28,7 @@ return {
 				"dirvish",
 				"fugitive",
 				"alpha",
+				"dashboard",
 				"NvimTree",
 				"packer",
 				"neogitstatus",
