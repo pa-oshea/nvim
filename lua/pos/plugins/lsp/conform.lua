@@ -19,6 +19,7 @@ return {
 				go = { "goimports", "gofumpt" },
 			},
 			format_on_save = {
+				async = true,
 				timeout_ms = 500,
 				lsp_fallback = true,
 			},
