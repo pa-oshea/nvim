@@ -189,10 +189,10 @@ return {
 				t = { "<cmd>TodoTrouble<cr>", "Todo Trouble" },
 				T = { "<cmd>TodoTelescope<cr>", "Todo Telescope" },
 			},
-			z = {
-				name = "Zen",
-				z = { "<cmd>ZenMode<cr>", "Zen mode" },
-			},
+			-- z = {
+			-- 	name = "Zen",
+			-- 	z = { "<cmd>ZenMode<cr>", "Zen mode" },
+			-- },
 		}
 
 		which_key.register(mappings, {
