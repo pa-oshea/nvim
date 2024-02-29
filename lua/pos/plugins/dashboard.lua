@@ -1,7 +1,6 @@
 return {
 	"nvimdev/dashboard-nvim",
 	event = "VimEnter",
-	enabled = false,
 	config = function()
 		local function get_neovim_version()
 			local v = vim.version()
