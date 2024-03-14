@@ -1,8 +1,10 @@
 return {
 	{
 		"lewis6991/gitsigns.nvim",
-		event = "BufReadPost",
+		enabled = vim.fn.executable("git") == 1,
+		event = "User BaseGitFile",
 		opts = {
+			max_file_length = vim.g.big_file.lines,
 			current_line_blame = true,
 			numhl = true,
 		},

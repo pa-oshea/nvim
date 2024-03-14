@@ -1,5 +1,0 @@
-require("pos.core.keymaps")
-require("pos.core.options")
-require("pos.core.lazy")
-require("pos.core.autocommands")
-require("pos.core.snips")
