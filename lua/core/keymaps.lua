@@ -107,6 +107,7 @@ local icons = {
 	g = { desc = get_icon("Git", 1, true) .. "Git" },
 	S = { desc = get_icon("Session", 1, true) .. "Session" },
 	t = { desc = get_icon("Terminal", 1, true) .. "Terminal" },
+	x = { desc = get_icon("Diagnostics", 1, true) .. "Trouble" },
 }
 
 -- standard Operations -----------------------------------------------------
@@ -118,6 +119,12 @@ maps.n["<leader>W"] = {
 		vim.cmd("SudaWrite")
 	end,
 	desc = "Save as sudo",
+}
+maps.n["<leader>v"] = {
+	function()
+		vim.cmd("UndotreeToggle")
+	end,
+	desc = "Undo tree",
 }
 maps.n["<leader>n"] = { "<cmd>enew<cr>", desc = "New file" }
 maps.n["gx"] = { utils.system_open, desc = "Open the file under cursor with system app" }
@@ -513,6 +520,12 @@ vim.api.nvim_create_autocmd("CmdwinEnter", {
 maps.n["<leader>g"] = icons.g
 if is_available("gitsigns.nvim") then
 	maps.n["<leader>g"] = icons.g
+	maps.n["<leader>gg"] = {
+		function()
+			vim.cmd("Neogit")
+		end,
+		desc = "Neogit",
+	}
 	maps.n["]g"] = {
 		function()
 			require("gitsigns").next_hunk()
@@ -520,6 +533,18 @@ if is_available("gitsigns.nvim") then
 		desc = "Next Git hunk",
 	}
 	maps.n["[g"] = {
+		function()
+			require("gitsigns").prev_hunk()
+		end,
+		desc = "Previous Git hunk",
+	}
+	maps.n["<leader>gj"] = {
+		function()
+			require("gitsigns").next_hunk()
+		end,
+		desc = "Next Git hunk",
+	}
+	maps.n["<leader>gk"] = {
 		function()
 			require("gitsigns").prev_hunk()
 		end,
@@ -587,37 +612,6 @@ if is_available("vim-fugitive") then
 			vim.cmd(":GBrowse")
 		end,
 		desc = "Open in github ",
-	}
-end
--- git client
-if vim.fn.executable("lazygit") == 1 then -- if lazygit exists, show it
-	maps.n["<leader>gg"] = {
-		function()
-			local git_dir = vim.fn.finddir(".git", vim.fn.getcwd() .. ";")
-			if git_dir ~= "" then
-				utils.toggle_term_cmd("lazygit")
-			else
-				utils.notify("Not a git repository", 4)
-			end
-		end,
-		desc = "ToggleTerm lazygit",
-	}
-end
-if vim.fn.executable("gitui") == 1 then -- if gitui exists, show it
-	maps.n["<leader>gg"] = {
-		function()
-			local git_dir = vim.fn.finddir(".git", vim.fn.getcwd() .. ";")
-			if git_dir ~= "" then
-				if vim.fn.executable("keychain") == 1 then
-					vim.cmd('TermExec cmd="eval `keychain --eval ~/.ssh/github.key` && gitui && exit"')
-				else
-					vim.cmd("TermExec cmd='gitui && exit'")
-				end
-			else
-				utils.notify("Not a git repository", 4)
-			end
-		end,
-		desc = "ToggleTerm gitui",
 	}
 end
 
@@ -870,7 +864,7 @@ if is_available("telescope.nvim") then
 		end,
 		desc = "Words in project (no hidden)",
 	}
-	maps.n["<leader>f/"] = {
+	maps.n["<leader>s/"] = {
 		function()
 			require("telescope.builtin").current_buffer_fuzzy_find()
 		end,
@@ -1023,6 +1017,21 @@ if is_available("toggleterm.nvim") then
 	maps.t["<F7>"] = maps.n["<F7>"]
 	maps.n["<C-'>"] = maps.n["<F7>"] -- requires terminal that supports binding <C-'>
 	maps.t["<C-'>"] = maps.n["<F7>"] -- requires terminal that supports binding <C-'>
+
+	-- git client
+	if vim.fn.executable("lazygit") == 1 then -- if lazygit exists, show it
+		maps.n["<leader>tl"] = {
+			function()
+				local git_dir = vim.fn.finddir(".git", vim.fn.getcwd() .. ";")
+				if git_dir ~= "" then
+					utils.toggle_term_cmd("lazygit")
+				else
+					utils.notify("Not a git repository", 4)
+				end
+			end,
+			desc = "ToggleTerm lazygit",
+		}
+	end
 end
 
 -- extra - improved terminal navigation
@@ -1030,6 +1039,41 @@ maps.t["<C-h>"] = { "<cmd>wincmd h<cr>", desc = "Terminal left window navigation
 maps.t["<C-j>"] = { "<cmd>wincmd j<cr>", desc = "Terminal down window navigation" }
 maps.t["<C-k>"] = { "<cmd>wincmd k<cr>", desc = "Terminal up window navigation" }
 maps.t["<C-l>"] = { "<cmd>wincmd l<cr>", desc = "Terminal right window navigation" }
+
+-- trouble [quickfix list]
+if is_available("trouble.nvim") then
+	maps.n["<leader>x"] = icons.x
+	maps.n["<leader>xx"] = {
+		function()
+			require("trouble").toggle()
+		end,
+		desc = "Trouble toggle",
+	}
+	maps.n["<leader>xw"] = {
+		function()
+			require("trouble").toggle("workspace_diagnostics")
+		end,
+		desc = "Workspace diagnostics",
+	}
+	maps.n["<leader>xd"] = {
+		function()
+			require("trouble").toggle("document_diagnostics")
+		end,
+		desc = "Document diagnostics",
+	}
+	maps.n["<leader>xq"] = {
+		function()
+			require("trouble").toggle("quickfix")
+		end,
+		desc = "Quickfix",
+	}
+	maps.n["<leader>xl"] = {
+		function()
+			require("trouble").toggle("loclist")
+		end,
+		desc = "Loclist",
+	}
+end
 
 -- dap.nvim [debugger] -----------------------------------------------------
 -- Depending your terminal some F keys may not work. To fix it:
@@ -1362,11 +1406,7 @@ if is_available("markdown-preview.nivm") or is_available("markmap.nvim") or is_a
 	if is_available("markmap.nvim") then
 		maps.n["<leader>Dm"] = {
 			function()
-				if is_android then
-					vim.cmd("MarkmapWatch")
-				else
-					vim.cmd("MarkmapOpen")
-				end
+				vim.cmd("MarkmapOpen")
 			end,
 			desc = "Markmap",
 		}
@@ -1436,9 +1476,17 @@ function M.lsp_mappings(client, bufnr)
 	local lsp_mappings = require("core.utils").get_mappings_template()
 	lsp_mappings.n["<leader>ld"] = {
 		function()
-			vim.diagnostic.open_float()
+			-- vim.diagnostic.open_float()
+			vim.cmd("Telescope diagnostics bufnr=0 theme=get_ivy")
 		end,
-		desc = "Hover diagnostics",
+		desc = "Buffer diagnostics",
+	}
+	lsp_mappings.n["<leader>lw"] = {
+		function()
+			require("telescope.builtin").diagnostics(require("telescope.themes").get_ivy())
+			-- vim.diagnostic.open_float()
+		end,
+		desc = "Workspace diagnostics",
 	}
 	lsp_mappings.n["[d"] = {
 		function()
@@ -1446,11 +1494,23 @@ function M.lsp_mappings(client, bufnr)
 		end,
 		desc = "Previous diagnostic",
 	}
+	lsp_mappings.n["<leader>lj"] = {
+		function()
+			vim.cmd("Lspsaga diagnostic_jump_next")
+		end,
+		desc = "Next diagnostic",
+	}
 	lsp_mappings.n["]d"] = {
 		function()
 			vim.diagnostic.goto_next()
 		end,
 		desc = "Next diagnostic",
+	}
+	lsp_mappings.n["<leader>lk"] = {
+		function()
+			vim.cmd("Lspsaga diagnostic_jump_prev")
+		end,
+		desc = "Previous diagnostic",
 	}
 	lsp_mappings.n["gl"] = {
 		function()
