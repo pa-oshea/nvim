@@ -23,6 +23,8 @@
   "friendly-snippets": { "branch": "main", "commit": "dcd4a586439a1c81357d5b9d26319ae218cc9479" },
   "garbage-day.nvim": { "branch": "main", "commit": "029214aff15487822fbbbce6c622d1c380a20fed" },
   "gitsigns.nvim": { "branch": "main", "commit": "4e348641b8206c3b8d23080999e3ddbe4ca90efc" },
+  "go.nvim": { "branch": "master", "commit": "9ac3e6faa32d01479973f4ca368d00b7ae328646" },
+  "guihua.lua": { "branch": "master", "commit": "9fb6795474918b492d9ab01b1ebaf85e8bf6fe0b" },
   "gutentags_plus": { "branch": "master", "commit": "a0157ca0092a21f0947917945506fde3859c9cd2" },
   "highlight-undo.nvim": { "branch": "main", "commit": "50a6884a8476be04ecce8f1c4ed692c5000ef0a1" },
   "hop.nvim": { "branch": "master", "commit": "6d853addd6e11df8338b26e869a29b36f2c3e893" },

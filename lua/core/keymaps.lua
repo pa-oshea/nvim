@@ -149,8 +149,8 @@ maps.n["<Tab>"] = {
 -- clipboard ---------------------------------------------------------------
 maps.n["<C-y>"] = { '"+y<esc>', desc = "Copy to cliboard" }
 maps.x["<C-y>"] = { '"+y<esc>', desc = "Copy to cliboard" }
-maps.n["<C-d>"] = { '"+y<esc>dd', desc = "Copy to clipboard and delete line" }
-maps.x["<C-d>"] = { '"+y<esc>dd', desc = "Copy to clipboard and delete line" }
+-- maps.n["<C-d>"] = { '"+y<esc>dd', desc = "Copy to clipboard and delete line" }
+-- maps.x["<C-d>"] = { '"+y<esc>dd', desc = "Copy to clipboard and delete line" }
 maps.n["<C-p>"] = { '"+p<esc>', desc = "Paste from clipboard" }
 
 -- Make 'c' key not copy to clipboard when changing a character.
