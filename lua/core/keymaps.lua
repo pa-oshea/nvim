@@ -538,18 +538,6 @@ if is_available("gitsigns.nvim") then
 		end,
 		desc = "Previous Git hunk",
 	}
-	maps.n["<leader>gj"] = {
-		function()
-			require("gitsigns").next_hunk()
-		end,
-		desc = "Next Git hunk",
-	}
-	maps.n["<leader>gk"] = {
-		function()
-			require("gitsigns").prev_hunk()
-		end,
-		desc = "Previous Git hunk",
-	}
 	maps.n["<leader>gl"] = {
 		function()
 			require("gitsigns").blame_line()
