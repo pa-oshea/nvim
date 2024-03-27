@@ -121,7 +121,7 @@ return {
 		"max397574/better-escape.nvim",
 		event = "InsertCharPre",
 		opts = {
-			mapping = {},
+			mapping = { "jk" },
 			timeout = 300,
 		},
 	},
