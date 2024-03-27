@@ -1166,13 +1166,13 @@ if is_available("nvim-dap") then
 		end,
 		desc = "Step Over (F10)",
 	}
-	maps.n["<leader>do"] = {
+	maps.n["<leader>du"] = {
 		function()
 			require("dap").step_back()
 		end,
 		desc = "Step Back (S-F10)",
 	}
-	maps.n["<leader>db"] = {
+	maps.n["<leader>di"] = {
 		function()
 			require("dap").step_into()
 		end,
