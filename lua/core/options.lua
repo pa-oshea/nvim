@@ -41,7 +41,7 @@ vim.opt.undodir = vim.fn.stdpath("data") .. "/undodir" -- Chooses where to store
 vim.opt.history = 1000 -- Number of commands to remember in a history table (per buffer).
 vim.opt.swapfile = false -- Ask what state to recover when opening a file that was not saved.
 vim.opt.wrap = false -- Disable wrapping of lines longer than the width of window.
-vim.opt.colorcolumn = "80" -- PEP8 like character limit vertical bar.
+vim.opt.colorcolumn = "120" -- PEP8 like character limit vertical bar.
 vim.opt.mousescroll = "ver:1,hor:0" -- Disables hozirontal scroll in neovim.
 vim.opt.guicursor = "n:blinkon200,i-ci-ve:ver25" -- Enable cursor blink.
 vim.opt.autochdir = true -- Use current file dir as working dir (See project.nvim).
@@ -61,7 +61,7 @@ vim.g.big_file = { size = 1024 * 100, lines = 10000 } -- For files bigger than t
 
 -- The next globals are toggleable with <space + l + u>
 vim.g.autoformat_enabled = false -- Enable auto formatting at start.
-vim.g.autopairs_enabled = false -- Enable autopairs at start.
+vim.g.autopairs_enabled = true -- Enable autopairs at start.
 vim.g.cmp_enabled = true -- Enable completion at start.
 vim.g.codelens_enabled = true -- Enable automatic codelens refreshing for lsp that support it.
 vim.g.diagnostics_mode = 3 -- Set code linting (0=off, 1=only show in status line, 2=virtual text off, 3=all on).
