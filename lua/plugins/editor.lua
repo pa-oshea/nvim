@@ -14,7 +14,6 @@
 --       -> neotree file browser   [neotree]
 --       -> nvim-ufo               [folding mod]
 --       -> nvim-neoclip           [nvim clipboard]
---       -> suda.vim               [write as sudo]
 --       -> vim-matchup            [Improved % motion]
 --       -> hop.nvim               [go to word visually]
 --       -> nvim-autopairs         [auto close brackets]
@@ -483,13 +482,6 @@ return {
 		opts = {},
 	},
 
-	--  suda.nvim [write as sudo]
-	--  https://github.com/lambdalisue/suda.vim
-	{
-		"lambdalisue/suda.vim",
-		cmd = { "SudaRead", "SudaWrite" },
-	},
-
 	--  vim-matchup [improved % motion]
 	--  https://github.com/andymass/vim-matchup
 	{
@@ -632,9 +624,6 @@ return {
 	--  https://github.com/folke/zen-mode.nvim
 	{ "folke/zen-mode.nvim", keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "Zen mode" } } },
 	{ "folke/twilight.nvim", cmd = "ZenMode" },
-
-	-- oil
-	{ "stevearc/oil.nvim", config = true },
 
 	--  CODE DOCUMENTATION ------------------------------------------------------
 	--  dooku.nvim [html doc generator]
