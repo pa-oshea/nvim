@@ -991,13 +991,13 @@ end
 
 -- toggleterm.nvim ----------------------------------------------------------
 if is_available("toggleterm.nvim") then
-	maps.n["<leader>t"] = icons.t
-	maps.n["<leader>tt"] = { "<cmd>ToggleTerm direction=float<cr>", desc = "ToggleTerm float" }
-	maps.n["<leader>th"] = {
+	maps.n["<leader>T"] = icons.t
+	maps.n["<leader>Tt"] = { "<cmd>ToggleTerm direction=float<cr>", desc = "ToggleTerm float" }
+	maps.n["<leader>Th"] = {
 		"<cmd>ToggleTerm size=10 direction=horizontal<cr>",
 		desc = "Toggleterm horizontal split",
 	}
-	maps.n["<leader>tv"] = {
+	maps.n["<leader>Tv"] = {
 		"<cmd>ToggleTerm size=80 direction=vertical<cr>",
 		desc = "Toggleterm vertical split",
 	}
@@ -1008,7 +1008,7 @@ if is_available("toggleterm.nvim") then
 
 	-- git client
 	if vim.fn.executable("lazygit") == 1 then -- if lazygit exists, show it
-		maps.n["<leader>tl"] = {
+		maps.n["<leader>Tl"] = {
 			function()
 				local git_dir = vim.fn.finddir(".git", vim.fn.getcwd() .. ";")
 				if git_dir ~= "" then
@@ -1258,37 +1258,37 @@ end
 maps.n["<leader>T"] = icons.tt
 maps.x["<leader>T"] = icons.tt
 if is_available("neotest") then
-	maps.n["<leader>Tu"] = {
+	maps.n["<leader>tu"] = {
 		function()
 			require("neotest").run.run()
 		end,
 		desc = "Unit",
 	}
-	maps.n["<leader>Ts"] = {
+	maps.n["<leader>ts"] = {
 		function()
 			require("neotest").run.stop()
 		end,
 		desc = "Stop unit",
 	}
-	maps.n["<leader>Tf"] = {
+	maps.n["<leader>tf"] = {
 		function()
 			require("neotest").run.run(vim.fn.expand("%"))
 		end,
 		desc = "File",
 	}
-	maps.n["<leader>Td"] = {
+	maps.n["<leader>td"] = {
 		function()
 			require("neotest").run.run({ strategy = "dap" })
 		end,
 		desc = "Unit in debugger",
 	}
-	maps.n["<leader>Tt"] = {
+	maps.n["<leader>tt"] = {
 		function()
 			require("neotest").summary.toggle()
 		end,
 		desc = "Neotest summary",
 	}
-	maps.n["<leader>TT"] = {
+	maps.n["<leader>tp"] = {
 		function()
 			require("neotest").output_panel.toggle()
 		end,
@@ -1305,7 +1305,7 @@ end
 --         If you use other framework or language, refer to nvim-coverage docs:
 --         https://github.com/andythigpen/nvim-coverage/blob/main/doc/nvim-coverage.txt
 if is_available("nvim-coverage") then
-	maps.n["<leader>Tc"] = {
+	maps.n["<leader>tc"] = {
 		function()
 			utils.notify("Attempting to find coverage/lcov.info in project root...", 3)
 			require("coverage").load(false)
@@ -1316,13 +1316,13 @@ if is_available("nvim-coverage") then
 end
 
 -- Extra - nodejs testing commands
-maps.n["<leader>Ta"] = {
+maps.n["<leader>ta"] = {
 	function()
 		vim.cmd("TestNodejs")
 	end,
 	desc = "All",
 }
-maps.n["<leader>Te"] = {
+maps.n["<leader>te"] = {
 	function()
 		vim.cmd("TestNodejsE2e")
 	end,
