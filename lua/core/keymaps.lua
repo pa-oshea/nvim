@@ -30,7 +30,6 @@
 --       -> comments.nvim
 --       -> git                                [git]
 --       -> file browsers
---       -> session manager
 --       -> smart-splits.nvim
 --       -> aerial.nvim
 --       -> telescope.nivm                     [find]
@@ -576,45 +575,31 @@ if is_available("diffview.nvim") then
 	maps.n["<leader>gd"] = icons.gd
 	maps.n["<leader>gdo"] = {
 		function()
-			vim.cmd(":DiffviewOpen")
+			vim.cmd("DiffviewOpen")
 		end,
 		desc = "Open diff view",
 	}
 	maps.n["<leader>gdc"] = {
 		function()
-			vim.cmd(":DiffviewClose")
+			vim.cmd("DiffviewClose")
 		end,
 		desc = "Close diff view",
 	}
 	maps.n["<leader>gdf"] = {
 		function()
-			vim.cmd(":DiffviewFileHistory")
+			vim.cmd("DiffviewFileHistory")
 		end,
 		desc = "File history (All commits)",
 	}
 	maps.n["<leader>gdd"] = {
 		function()
-			vim.cmd(":DiffviewFileHistory %")
+			vim.cmd("DiffviewFileHistory %")
 		end,
 		desc = "File history (Current file)",
 	}
 end
--- git fugitive
-if is_available("vim-fugitive") then
-	maps.n["<leader>gP"] = {
-		function()
-			vim.cmd(":GBrowse")
-		end,
-		desc = "Open in github ",
-	}
-end
 
 -- file browsers ------------------------------------
--- ranger
-if is_available("rnvimr") then
-	maps.n["<leader>r"] = { "<cmd>RnvimrToggle<cr>", desc = "Ranger" }
-end
-
 -- neotree
 if is_available("neo-tree.nvim") then
 	maps.n["<leader>e"] = { "<cmd>Neotree toggle<cr>", desc = "Neotree" }
@@ -627,25 +612,6 @@ if is_available("neo-tree.nvim") then
 			end
 		end,
 		desc = "Neotree Focus",
-	}
-end
-
--- session manager ---------------------------------------------------------
-if is_available("neovim-session-manager") then
-	maps.n["<leader>S"] = icons.S
-	maps.n["<leader>Sl"] = {
-		"<cmd>SessionManager! load_last_session<cr>",
-		desc = "Load last session",
-	}
-	maps.n["<leader>Ss"] = {
-		"<cmd>SessionManager! save_current_session<cr>",
-		desc = "Save this session",
-	}
-	maps.n["<leader>Sd"] = { "<cmd>SessionManager! delete_session<cr>", desc = "Delete session" }
-	maps.n["<leader>Sf"] = { "<cmd>SessionManager! load_session<cr>", desc = "Search sessions" }
-	maps.n["<leader>S."] = {
-		"<cmd>SessionManager! load_current_dir_session<cr>",
-		desc = "Load current directory session",
 	}
 end
 
