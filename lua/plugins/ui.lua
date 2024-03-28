@@ -30,6 +30,40 @@ return {
 			vim.cmd([[colorscheme catppuccin-mocha]])
 		end,
 	},
+	-- tokyonight [theme]
+	-- https://github.com/folke/tokyonight.nvim
+	{
+		"folke/tokyonight.nvim",
+		event = "User LoadColorSchemes",
+		opts = {
+			dim_inactive = false,
+			styles = {
+				comments = { italic = true },
+				keywords = { italic = true },
+			},
+		},
+	},
+
+	--  astrotheme [theme]
+	--  https://github.com/AstroNvim/astrotheme
+	{
+		"AstroNvim/astrotheme",
+		event = "User LoadColorSchemes",
+		opts = {
+			palette = "astrodark",
+			plugins = { ["dashboard-nvim"] = true },
+		},
+	},
+
+	-- aura [theme]
+	-- https://github.com/daltonmenezes/aura-theme/tree/main/packages/neovim
+	{
+		"baliestri/aura-theme",
+		config = function(plugin)
+			vim.opt.rtp:append(plugin.dir .. "/packages/neovim")
+		end,
+	},
+	{ "nyoom-engineering/oxocarbon.nvim" },
 
 	-- dashboard [greeter]
 	-- https://github.com/nvimdev/dashboard-nvim
