@@ -9,7 +9,16 @@ return {
 			numhl = true,
 		},
 	},
-	{ "sindrets/diffview.nvim" },
+	{
+		"sindrets/diffview.nvim",
+		opts = {
+			view = {
+				merge_tool = {
+					layout = "diff3_mixed",
+				},
+			},
+		},
+	},
 	{
 		"NeogitOrg/neogit",
 		dependencies = {
