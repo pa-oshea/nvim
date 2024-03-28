@@ -1261,8 +1261,8 @@ end
 
 -- testing [tests] -------------------------------------------------
 -- neotest
-maps.n["<leader>T"] = icons.tt
-maps.x["<leader>T"] = icons.tt
+maps.n["<leader>t"] = icons.tt
+maps.x["<leader>t"] = icons.tt
 if is_available("neotest") then
 	maps.n["<leader>tu"] = {
 		function()
