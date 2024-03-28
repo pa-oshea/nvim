@@ -1,29 +1,11 @@
--- local map = vim.api.nvim_set_keymap
---
 -- -- Moving text
 -- map("v", "J", ":m '>+1<CR>gv=gv", { noremap = true, silent = false })
 -- map("v", "K", ":m '<-2<CR>gv=gv", { noremap = true, silent = false })
---
--- -- Keep centered when page up and down
--- map("n", "<C-d>", "<C-d>zz", { noremap = true, silent = false })
--- map("n", "<C-u>", "<C-u>zz", { noremap = true, silent = false })
---
 -- -- Move stuff
 -- map("n", "J", ":m '>+1<CR>gv=gv", { noremap = true, silent = false })
 -- map("n", "K", ":m '<-2<CR>gv=gv", { noremap = true, silent = false })
 --
--- -- Searching centering
--- map("n", "n", "nzzzv", { noremap = true, silent = false })
--- map("n", "N", "Nzzzv", { noremap = true, silent = false })
---
 -- map("n", "Q", "<nop>", { noremap = true, silent = false })
--- map("i", "<C-c>", "<Esc>", { noremap = true, silent = false })
---
--- -- Stay in indent mode
--- map("v", "<", "<gv", { noremap = true, silent = false })
--- map("v", ">", ">gv", { noremap = true, silent = false })
--- Keybindings (qwerty).
-
 -- DESCRIPTION:
 -- All mappings are defined here.
 
@@ -108,6 +90,7 @@ local icons = {
 	S = { desc = get_icon("Session", 1, true) .. "Session" },
 	t = { desc = get_icon("Terminal", 1, true) .. "Terminal" },
 	x = { desc = get_icon("Diagnostics", 1, true) .. "Trouble" },
+	gd = { desc = get_icon("GitConflict", 1, true) .. "Diff view" },
 }
 
 -- standard Operations -----------------------------------------------------
@@ -519,6 +502,7 @@ vim.api.nvim_create_autocmd("CmdwinEnter", {
 -- gitsigns.nvim
 maps.n["<leader>g"] = icons.g
 if is_available("gitsigns.nvim") then
+	local gs = require("gitsigns")
 	maps.n["<leader>g"] = icons.g
 	maps.n["<leader>gg"] = {
 		function()
@@ -528,69 +512,91 @@ if is_available("gitsigns.nvim") then
 	}
 	maps.n["]g"] = {
 		function()
-			require("gitsigns").next_hunk()
+			gs.next_hunk()
 		end,
 		desc = "Next Git hunk",
 	}
 	maps.n["[g"] = {
 		function()
-			require("gitsigns").prev_hunk()
+			gs.prev_hunk()
 		end,
 		desc = "Previous Git hunk",
 	}
 	maps.n["<leader>gl"] = {
 		function()
-			require("gitsigns").blame_line()
+			gs.blame_line()
 		end,
 		desc = "View Git blame",
 	}
 	maps.n["<leader>gL"] = {
 		function()
-			require("gitsigns").blame_line({ full = true })
+			gs.blame_line({ full = true })
 		end,
 		desc = "View full Git blame",
 	}
 	maps.n["<leader>gp"] = {
 		function()
-			require("gitsigns").preview_hunk()
+			gs.preview_hunk()
 		end,
 		desc = "Preview Git hunk",
 	}
 	maps.n["<leader>gh"] = {
 		function()
-			require("gitsigns").reset_hunk()
+			gs.reset_hunk()
 		end,
 		desc = "Reset Git hunk",
 	}
 	maps.n["<leader>gr"] = {
 		function()
-			require("gitsigns").reset_buffer()
+			gs.reset_buffer()
 		end,
 		desc = "Reset Git buffer",
 	}
 	maps.n["<leader>gs"] = {
 		function()
-			require("gitsigns").stage_hunk()
+			gs.stage_hunk()
 		end,
 		desc = "Stage Git hunk",
 	}
 	maps.n["<leader>gS"] = {
 		function()
-			require("gitsigns").stage_buffer()
+			gs.stage_buffer()
 		end,
 		desc = "Stage Git buffer",
 	}
 	maps.n["<leader>gu"] = {
 		function()
-			require("gitsigns").undo_stage_hunk()
+			gs.undo_stage_hunk()
 		end,
 		desc = "Unstage Git hunk",
 	}
-	maps.n["<leader>gd"] = {
+end
+-- diff view
+if is_available("diffview.nvim") then
+	maps.n["<leader>gd"] = icons.gd
+	maps.n["<leader>gdo"] = {
 		function()
-			require("gitsigns").diffthis()
+			vim.cmd(":DiffviewOpen")
 		end,
-		desc = "View Git diff",
+		desc = "Open diff view",
+	}
+	maps.n["<leader>gdc"] = {
+		function()
+			vim.cmd(":DiffviewClose")
+		end,
+		desc = "Close diff view",
+	}
+	maps.n["<leader>gdf"] = {
+		function()
+			vim.cmd(":DiffviewFileHistory")
+		end,
+		desc = "File history (All commits)",
+	}
+	maps.n["<leader>gdd"] = {
+		function()
+			vim.cmd(":DiffviewFileHistory %")
+		end,
+		desc = "File history (Current file)",
 	}
 end
 -- git fugitive
