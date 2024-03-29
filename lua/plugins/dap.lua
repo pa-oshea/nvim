@@ -333,6 +333,7 @@ return {
 			{
 				"rcarriga/nvim-dap-ui",
 				dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+				-- icons = { expanded = "", collapsed = "", circular = "" }
 				opts = { floating = { border = "rounded" } },
 				config = function(_, opts)
 					local dap, dapui = require("dap"), require("dapui")

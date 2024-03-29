@@ -31,7 +31,7 @@ M.apply_default_lsp_settings = function()
 		{ name = "DiagnosticSignHint", text = get_icon("DiagnosticHint"), texthl = "DiagnosticSignHint" },
 		{ name = "DiagnosticSignInfo", text = get_icon("DiagnosticInfo"), texthl = "DiagnosticSignInfo" },
 		{ name = "DapStopped", text = get_icon("DapStopped"), texthl = "DiagnosticWarn" },
-		{ name = "DapBreakpoint", text = get_icon("DapBreakpoint"), texthl = "DiagnosticInfo" },
+		{ name = "DapBreakpoint", text = get_icon("DapBreakpoint"), texthl = "DiagnosticSignInfo" },
 		{ name = "DapBreakpointRejected", text = get_icon("DapBreakpointRejected"), texthl = "DiagnosticError" },
 		{ name = "DapBreakpointCondition", text = get_icon("DapBreakpointCondition"), texthl = "DiagnosticInfo" },
 		{ name = "DapLogPoint", text = get_icon("DapLogPoint"), texthl = "DiagnosticInfo" },
