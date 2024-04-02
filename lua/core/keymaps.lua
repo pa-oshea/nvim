@@ -692,7 +692,7 @@ end
 if is_available("telescope.nvim") then
 	maps.n["<leader>f"] = {
 		function()
-			require("telescope.builtin").find_files()
+			require("fzf-lua").files()
 		end,
 		desc = "Find file",
 	}
