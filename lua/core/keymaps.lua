@@ -8,6 +8,7 @@
 -- map("n", "Q", "<nop>", { noremap = true, silent = false })
 -- DESCRIPTION:
 -- All mappings are defined here.
+-- TODO: aerial, lsp saga stuff
 
 --    Sections:
 --
@@ -676,7 +677,7 @@ else
 	maps.n["<C-Right>"] = { "<cmd>vertical resize +2<CR>", desc = "Resize split right" }
 end
 
--- aerial.nvimm ------------------------------------------------------------
+-- lspsaga.nvimm ------------------------------------------------------------
 if is_available("lspsaga.nvim") then
 	maps.n["<leader>l"] = icons.l
 	maps.n["<leader>lo"] = {

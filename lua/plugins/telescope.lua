@@ -1,5 +1,13 @@
 return {
-
+	{
+		"ibhagwan/fzf-lua",
+		-- optional for icon support
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			-- calling `setup` is optional for customization
+			require("fzf-lua").setup({})
+		end,
+	},
 	--  Telescope [search] + [search backend] dependency
 	--  https://github.com/nvim-telescope/telescope.nvim
 	--  https://github.com/nvim-telescope/telescope-fzf-native.nvim
