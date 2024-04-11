@@ -1,14 +1,5 @@
--- -- Moving text
--- map("v", "J", ":m '>+1<CR>gv=gv", { noremap = true, silent = false })
--- map("v", "K", ":m '<-2<CR>gv=gv", { noremap = true, silent = false })
--- -- Move stuff
--- map("n", "J", ":m '>+1<CR>gv=gv", { noremap = true, silent = false })
--- map("n", "K", ":m '<-2<CR>gv=gv", { noremap = true, silent = false })
---
--- map("n", "Q", "<nop>", { noremap = true, silent = false })
 -- DESCRIPTION:
 -- All mappings are defined here.
--- TODO: aerial, lsp saga stuff
 
 --    Sections:
 --
@@ -96,20 +87,12 @@ local icons = {
 -- standard Operations -----------------------------------------------------
 maps.n["j"] = { "v:count == 0 ? 'gj' : 'j'", expr = true, desc = "Move cursor down" }
 maps.n["k"] = { "v:count == 0 ? 'gk' : 'k'", expr = true, desc = "Move cursor up" }
-maps.n["<leader>w"] = { "<cmd>w<cr>", desc = "Save" }
-maps.n["<leader>W"] = {
-	function()
-		vim.cmd("SudaWrite")
-	end,
-	desc = "Save as sudo",
-}
 maps.n["<leader>v"] = {
 	function()
 		vim.cmd("UndotreeToggle")
 	end,
 	desc = "Undo tree",
 }
-maps.n["<leader>n"] = { "<cmd>enew<cr>", desc = "New file" }
 maps.n["gx"] = { utils.system_open, desc = "Open the file under cursor with system app" }
 maps.n["<C-s>"] = { "<cmd>w!<cr>", desc = "Force write" }
 maps.i["<C-BS>"] = { "<C-W>", desc = "Enable CTRL+backsace to delete." }
@@ -132,8 +115,6 @@ maps.n["<Tab>"] = {
 -- clipboard ---------------------------------------------------------------
 maps.n["<C-y>"] = { '"+y<esc>', desc = "Copy to cliboard" }
 maps.x["<C-y>"] = { '"+y<esc>', desc = "Copy to cliboard" }
--- maps.n["<C-d>"] = { '"+y<esc>dd', desc = "Copy to clipboard and delete line" }
--- maps.x["<C-d>"] = { '"+y<esc>dd', desc = "Copy to clipboard and delete line" }
 maps.n["<C-p>"] = { '"+p<esc>', desc = "Paste from clipboard" }
 
 -- Make 'c' key not copy to clipboard when changing a character.
@@ -294,26 +275,14 @@ maps.n["<leader>ba"] = {
 	end,
 	desc = "Write all changed buffers",
 }
-maps.n["<leaader>bf"] = {
-	function()
-		require("telescope.builtin").buffers()
-	end,
-	desc = "Find buffers",
-}
-
--- quick movement aliases
-maps.n["<S-Down>"] = {
-	function()
-		vim.api.nvim_feedkeys("5j", "n", true)
-	end,
-	desc = "Fast move down",
-}
-maps.n["<S-Up>"] = {
-	function()
-		vim.api.nvim_feedkeys("5k", "n", true)
-	end,
-	desc = "Fast move up",
-}
+if is_available("fzf-lua") then
+	maps.n["<leader>bf"] = {
+		function()
+			require("fzf-lua").buffers()
+		end,
+		desc = "Find buffers",
+	}
+end
 
 -- tabs
 maps.n["]t"] = {
@@ -328,16 +297,6 @@ maps.n["[t"] = {
 	end,
 	desc = "Previous tab",
 }
-
--- zen mode
-if is_available("zen-mode.nvim") then
-	maps.n["<leader>uz"] = {
-		function()
-			ui.toggle_zen_mode()
-		end,
-		desc = "Zen mode",
-	}
-end
 
 -- ui toggles [ui] ---------------------------------------------------------
 maps.n["<leader>u"] = icons.u
@@ -469,47 +428,45 @@ vim.api.nvim_create_autocmd("CmdwinEnter", {
 --
 -- -------------------------------------------------------------------------
 
--- -- alpha-nvim --------------------------------------------------------------
--- if is_available("alpha-nvim") then
--- 	maps.n["<leader>h"] = {
--- 		function()
--- 			local wins = vim.api.nvim_tabpage_list_wins(0)
--- 			if #wins > 1 and vim.api.nvim_get_option_value("filetype", { win = wins[1] }) == "neo-tree" then
--- 				vim.fn.win_gotoid(wins[2]) -- go to non-neo-tree window to toggle alpha
--- 			end
--- 			require("alpha").start(false, require("alpha").default_config)
--- 			vim.b.miniindentscope_disable = true
--- 		end,
--- 		desc = "Home screen",
--- 	}
--- end
---
--- -- comment.nvim -------------------------------------------------------------
--- if is_available("Comment.nvim") then
--- 	maps.n["<leader>/"] = {
--- 		function()
--- 			require("Comment.api").toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1)
--- 		end,
--- 		desc = "Comment line",
--- 	}
--- 	maps.x["<leader>/"] = {
--- 		"<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>",
--- 		desc = "comment line",
--- 	}
--- end
-
 -- [git] -----------------------------------------------------------
 -- gitsigns.nvim
 maps.n["<leader>g"] = icons.g
-if is_available("gitsigns.nvim") then
-	local gs = require("gitsigns")
-	maps.n["<leader>g"] = icons.g
+if is_available("neogit") then
 	maps.n["<leader>gg"] = {
 		function()
-			vim.cmd("Neogit")
+			require("neogit").open()
 		end,
 		desc = "Neogit",
 	}
+end
+if is_available("telescope.nvim") then
+	maps.n["<leader>gb"] = {
+		function()
+			require("telescope.builtin").git_branches()
+		end,
+		desc = "Git branches",
+	}
+	maps.n["<leader>gc"] = {
+		function()
+			require("telescope.builtin").git_commits()
+		end,
+		desc = "Git commits (repository)",
+	}
+	maps.n["<leader>gC"] = {
+		function()
+			require("telescope.builtin").git_bcommits()
+		end,
+		desc = "Git commits (current file)",
+	}
+	maps.n["<leader>gt"] = {
+		function()
+			require("telescope.builtin").git_status()
+		end,
+		desc = "Git status",
+	}
+end
+if is_available("gitsigns.nvim") then
+	local gs = require("gitsigns")
 	maps.n["]g"] = {
 		function()
 			gs.next_hunk()
@@ -677,50 +634,18 @@ else
 	maps.n["<C-Right>"] = { "<cmd>vertical resize +2<CR>", desc = "Resize split right" }
 end
 
--- lspsaga.nvimm ------------------------------------------------------------
-if is_available("lspsaga.nvim") then
-	maps.n["<leader>l"] = icons.l
-	maps.n["<leader>lo"] = {
-		function()
-			vim.cmd("Lspsaga outline")
-		end,
-		desc = "Symbols tree",
-	}
-end
-
--- telescope.nvim [find] ----------------------------------------------------
-if is_available("telescope.nvim") then
+-- fzf-lua [find] -----------------------------------------------------------
+if is_available("fzf-lua") then
 	maps.n["<leader>f"] = {
 		function()
 			require("fzf-lua").files()
 		end,
 		desc = "Find file",
 	}
+end
+-- telescope.nvim [find] ----------------------------------------------------
+if is_available("telescope.nvim") then
 	maps.n["<leader>s"] = icons.s
-	maps.n["<leader>gb"] = {
-		function()
-			require("telescope.builtin").git_branches()
-		end,
-		desc = "Git branches",
-	}
-	maps.n["<leader>gc"] = {
-		function()
-			require("telescope.builtin").git_commits()
-		end,
-		desc = "Git commits (repository)",
-	}
-	maps.n["<leader>gC"] = {
-		function()
-			require("telescope.builtin").git_bcommits()
-		end,
-		desc = "Git commits (current file)",
-	}
-	maps.n["<leader>gt"] = {
-		function()
-			require("telescope.builtin").git_status()
-		end,
-		desc = "Git status",
-	}
 	maps.n["<leader>s<CR>"] = {
 		function()
 			require("telescope.builtin").resume()
@@ -830,31 +755,6 @@ if is_available("telescope.nvim") then
 			require("telescope.builtin").current_buffer_fuzzy_find()
 		end,
 		desc = "Words in current buffer",
-	}
-
-	-- Some lsp keymappings are here because they depend on telescope
-	maps.n["<leader>l"] = icons.l
-	maps.n["<leader>ls"] = {
-		function()
-			local aerial_avail, _ = pcall(require, "aerial")
-			if aerial_avail then
-				require("telescope").extensions.aerial.aerial()
-			else
-				require("telescope.builtin").lsp_document_symbols()
-			end
-		end,
-		desc = "Search symbol in buffer", -- Useful to find every time a variable is assigned.
-	}
-	maps.n["gs"] = {
-		function()
-			local aerial_avail, _ = pcall(require, "aerial")
-			if aerial_avail then
-				require("telescope").extensions.aerial.aerial()
-			else
-				require("telescope.builtin").lsp_document_symbols()
-			end
-		end,
-		desc = "Search symbol in buffer", -- Useful to find every time a variable is assigned.
 	}
 
 	-- extra - project.nvim
@@ -1000,41 +900,6 @@ maps.t["<C-h>"] = { "<cmd>wincmd h<cr>", desc = "Terminal left window navigation
 maps.t["<C-j>"] = { "<cmd>wincmd j<cr>", desc = "Terminal down window navigation" }
 maps.t["<C-k>"] = { "<cmd>wincmd k<cr>", desc = "Terminal up window navigation" }
 maps.t["<C-l>"] = { "<cmd>wincmd l<cr>", desc = "Terminal right window navigation" }
-
--- trouble [quickfix list]
-if is_available("trouble.nvim") then
-	maps.n["<leader>x"] = icons.x
-	maps.n["<leader>xx"] = {
-		function()
-			require("trouble").toggle()
-		end,
-		desc = "Trouble toggle",
-	}
-	maps.n["<leader>xw"] = {
-		function()
-			require("trouble").toggle("workspace_diagnostics")
-		end,
-		desc = "Workspace diagnostics",
-	}
-	maps.n["<leader>xd"] = {
-		function()
-			require("trouble").toggle("document_diagnostics")
-		end,
-		desc = "Document diagnostics",
-	}
-	maps.n["<leader>xq"] = {
-		function()
-			require("trouble").toggle("quickfix")
-		end,
-		desc = "Quickfix",
-	}
-	maps.n["<leader>xl"] = {
-		function()
-			require("trouble").toggle("loclist")
-		end,
-		desc = "Loclist",
-	}
-end
 
 -- dap.nvim [debugger] -----------------------------------------------------
 -- Depending your terminal some F keys may not work. To fix it:
@@ -1414,9 +1279,6 @@ if is_available("hop.nvim") then
 	}
 end
 
--- mason-lspconfig.nvim [lsp] -------------------------------------------------
--- WARNING: Don't delete this section, or you won't have LSP keymappings
-
 -- A function we call from the script to start lsp.
 ---@return table lsp_mappings #
 function M.lsp_mappings(client, bufnr)
@@ -1435,43 +1297,18 @@ function M.lsp_mappings(client, bufnr)
 	end
 
 	local lsp_mappings = require("core.utils").get_mappings_template()
-	lsp_mappings.n["<leader>ld"] = {
-		function()
-			-- vim.diagnostic.open_float()
-			vim.cmd("Telescope diagnostics bufnr=0 theme=get_ivy")
-		end,
-		desc = "Buffer diagnostics",
-	}
-	lsp_mappings.n["<leader>lw"] = {
-		function()
-			require("telescope.builtin").diagnostics(require("telescope.themes").get_ivy())
-			-- vim.diagnostic.open_float()
-		end,
-		desc = "Workspace diagnostics",
-	}
+	maps.n["<leader>l"] = icons.l
 	lsp_mappings.n["[d"] = {
 		function()
 			vim.diagnostic.goto_prev()
 		end,
 		desc = "Previous diagnostic",
 	}
-	lsp_mappings.n["<leader>lj"] = {
-		function()
-			vim.cmd("Lspsaga diagnostic_jump_next")
-		end,
-		desc = "Next diagnostic",
-	}
 	lsp_mappings.n["]d"] = {
 		function()
 			vim.diagnostic.goto_next()
 		end,
 		desc = "Next diagnostic",
-	}
-	lsp_mappings.n["<leader>lk"] = {
-		function()
-			vim.cmd("Lspsaga diagnostic_jump_prev")
-		end,
-		desc = "Previous diagnostic",
 	}
 	lsp_mappings.n["gl"] = {
 		function()
@@ -1481,11 +1318,48 @@ function M.lsp_mappings(client, bufnr)
 	}
 
 	if is_available("telescope.nvim") then
-		lsp_mappings.n["<leader>lD"] = {
+		lsp_mappings.n["<leader>ld"] = {
 			function()
-				require("telescope.builtin").diagnostics()
+				vim.cmd("Telescope diagnostics bufnr=0 theme=get_ivy")
 			end,
-			desc = "Diagnostics",
+			desc = "Buffer diagnostics",
+		}
+		lsp_mappings.n["<leader>lw"] = {
+			function()
+				require("telescope.builtin").diagnostics(require("telescope.themes").get_ivy())
+			end,
+			desc = "Workspace diagnostics",
+		}
+		lsp_mappings.n["<leader>ls"] = {
+			function()
+				local aerial_avail, _ = pcall(require, "aerial")
+				if aerial_avail then
+					vim.cmd("Telescope aerial aerial theme=get_ivy")
+				else
+					require("telescope.builtin").lsp_document_symbols(require("telescope.theme").get_ivy())
+				end
+			end,
+			desc = "Search symbol in buffer", -- Useful to find every time a variable is assigned.
+		}
+		lsp_mappings.n["gs"] = {
+			function()
+				local aerial_avail, _ = pcall(require, "aerial")
+				if aerial_avail then
+					vim.cmd("Telescope aerial aerial theme=get_ivy")
+				else
+					require("telescope.builtin").lsp_document_symbols(require("telescope.theme").get_ivy())
+				end
+			end,
+			desc = "Search symbol in buffer", -- Useful to find every time a variable is assigned.
+		}
+	end
+
+	if is_available("aerial") then
+		lsp_mappings.n["<leader>lo"] = {
+			function()
+				require("aerial").toggle()
+			end,
+			desc = "Aerial symbols",
 		}
 	end
 

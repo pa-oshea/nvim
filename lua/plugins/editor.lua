@@ -21,7 +21,6 @@
 --       -> comment.nvim           [comment with a key]
 --       -> undotree               [history visualizer]
 --       -> arrow.nvim             [file bookmark]
---       -> zen-mode.nvim          [distraction free mode]
 
 return {
 	-- project.nvim [project search + auto cd]
@@ -619,11 +618,6 @@ return {
 			leader_key = ";", -- Recommended to be a single key
 		},
 	},
-
-	--  zen-mode.nvim [distraction free mode]
-	--  https://github.com/folke/zen-mode.nvim
-	{ "folke/zen-mode.nvim", keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "Zen mode" } } },
-	{ "folke/twilight.nvim", cmd = "ZenMode" },
 
 	--  CODE DOCUMENTATION ------------------------------------------------------
 	--  dooku.nvim [html doc generator]

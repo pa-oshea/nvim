@@ -10,10 +10,8 @@
 --       -> nvim-lint                      [lsp linting]
 --       -> neodev                         [lsp for nvim lua api]
 --       -> garbage-day                    [lsp garbage collector]
---       -> lspsaga                        [lsp enhancement]
 --       -> lsp-lens                       [lsp enhancement]
 --       -> fidget                         [lsp messages]
---       -> trouble                        [lsp quickfix list]
 --
 --       ## COMPILER
 --       -> compiler.nvim                  [compiler]
@@ -234,35 +232,7 @@ return {
 		},
 	},
 
-	-- lspsaga [lsp enhancement]
-	-- https://nvimdev.github.io/lspsaga/
-	{
-		"nvimdev/lspsaga.nvim",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter", -- optional
-			"nvim-tree/nvim-web-devicons", -- optional
-		},
-		config = function()
-			local lspsaga = require("lspsaga")
-			lspsaga.setup({
-				ui = {
-					code_action = "󰌵",
-				},
-				outline = {
-					close_after_jump = true,
-				},
-				code_action = {
-					extend_gitsigns = true,
-				},
-				symbol_in_winbar = {
-					enable = false,
-				},
-				light_blub = {
-					virtual_text = false,
-				},
-			})
-		end,
-	},
+	-- aerial
 	{
 		"stevearc/aerial.nvim",
 		opts = {
@@ -303,14 +273,6 @@ return {
 	{
 		"VidocqH/lsp-lens.nvim",
 		config = true,
-	},
-
-	-- touble
-	-- https://github.com/folke/trouble.nvim
-	{
-		"folke/trouble.nvim",
-		cmd = { "TroubleToggle", "Trouble" },
-		opts = { use_diagnostic_signs = true },
 	},
 
 	--  COMPILER ----------------------------------------------------------------
