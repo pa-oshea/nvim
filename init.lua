@@ -19,6 +19,3 @@ for _, source in ipairs({
 end
 
 -- TODO: find out about lsp workspace folders
--- TODO: keymap
--- TODO: language plugins and keymaps
--- TODO: fix zen mode
