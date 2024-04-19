@@ -6,7 +6,6 @@ return {
 			"windwp/nvim-ts-autotag",
 			"nvim-treesitter/nvim-treesitter-textobjects",
 			"JoosepAlviste/nvim-ts-context-commentstring",
-			"hiphish/rainbow-delimiters.nvim",
 		},
 		event = "User BaseFile",
 		cmd = {

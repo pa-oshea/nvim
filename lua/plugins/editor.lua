@@ -15,7 +15,6 @@
 --       -> nvim-ufo               [folding mod]
 --       -> nvim-neoclip           [nvim clipboard]
 --       -> vim-matchup            [Improved % motion]
---       -> hop.nvim               [go to word visually]
 --       -> nvim-autopairs         [auto close brackets]
 --       -> lsp_signature.nvim     [auto params help]
 --       -> comment.nvim           [comment with a key]
@@ -118,7 +117,7 @@ return {
 		"max397574/better-escape.nvim",
 		event = "InsertCharPre",
 		opts = {
-			mapping = { "jk" },
+			mapping = { "jk", "kj", "jj", "kk" },
 			timeout = 300,
 		},
 	},
@@ -490,14 +489,6 @@ return {
 			vim.g.matchup_matchparen_deferred = 1 -- work async
 			vim.g.matchup_matchparen_offscreen = {} -- disable status bar icon
 		end,
-	},
-
-	--  hop.nvim [go to word visually]
-	--  https://github.com/smoka7/hop.nvim
-	{
-		"smoka7/hop.nvim",
-		cmd = { "HopWord" },
-		opts = { keys = "etovxqpdygfblzhckisuran" },
 	},
 
 	--  nvim-autopairs [auto close brackets]
