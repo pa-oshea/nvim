@@ -97,7 +97,6 @@ maps.n["gx"] = { utils.system_open, desc = "Open the file under cursor with syst
 maps.n["<C-s>"] = { "<cmd>w!<cr>", desc = "Force write" }
 maps.i["<C-BS>"] = { "<C-W>", desc = "Enable CTRL+backsace to delete." }
 maps.n["0"] = { "^", desc = "Go to the fist character of the line (aliases 0 to ^)" }
-maps.n["<leader>q"] = { "<cmd>confirm q<cr>", desc = "Quit" }
 maps.n["<leader>q"] = {
 	function()
 		require("core.utils").confirm_quit()
