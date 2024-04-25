@@ -1157,13 +1157,13 @@ maps.n["<leader>ta"] = {
 	function()
 		vim.cmd("TestNodejs")
 	end,
-	desc = "All",
+	desc = "All (Node)",
 }
 maps.n["<leader>te"] = {
 	function()
 		vim.cmd("TestNodejsE2e")
 	end,
-	desc = "E2e",
+	desc = "E2e (Node)",
 }
 
 -- nvim-ufo [code folding] --------------------------------------------------

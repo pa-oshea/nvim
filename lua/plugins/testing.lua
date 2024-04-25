@@ -23,14 +23,9 @@ return {
 		"nvim-neotest/neotest",
 		cmd = { "Neotest" },
 		dependencies = {
-			"sidlatau/neotest-dart",
-			"Issafalcon/neotest-dotnet",
-			"jfpedroza/neotest-elixir",
 			"nvim-neotest/neotest-go",
 			"rcasia/neotest-java",
 			"nvim-neotest/neotest-jest",
-			"olimorris/neotest-phpunit",
-			"nvim-neotest/neotest-python",
 			"rouge8/neotest-rust",
 			"lawrence-laz/neotest-zig",
 		},
@@ -38,14 +33,9 @@ return {
 			return {
 				-- your neotest config here
 				adapters = {
-					require("neotest-dart"),
-					require("neotest-dotnet"),
-					require("neotest-elixir"),
 					require("neotest-go"),
 					require("neotest-java"),
 					require("neotest-jest"),
-					require("neotest-phpunit"),
-					require("neotest-python"),
 					require("neotest-rust"),
 					require("neotest-zig"),
 				},
