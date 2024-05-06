@@ -27,7 +27,11 @@ return {
 			"rcasia/neotest-java",
 			"nvim-neotest/neotest-jest",
 			"rouge8/neotest-rust",
-			"lawrence-laz/neotest-zig",
+			-- "lawrence-laz/neotest-zig",
+			"nvim-neotest/nvim-nio",
+			"nvim-lua/plenary.nvim",
+			"antoinemadec/FixCursorHold.nvim",
+			"nvim-treesitter/nvim-treesitter",
 		},
 		opts = function()
 			return {
@@ -37,7 +41,7 @@ return {
 					require("neotest-java"),
 					require("neotest-jest"),
 					require("neotest-rust"),
-					require("neotest-zig"),
+					-- require("neotest-zig"),
 				},
 			}
 		end,
