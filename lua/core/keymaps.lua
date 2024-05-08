@@ -1295,6 +1295,8 @@ function M.lsp_mappings(client, bufnr)
 		return false
 	end
 
+	local isJava = client.name == "jdtls"
+
 	local lsp_mappings = require("core.utils").get_mappings_template()
 	maps.n["<leader>l"] = icons.l
 	lsp_mappings.n["[d"] = {
@@ -1370,7 +1372,7 @@ function M.lsp_mappings(client, bufnr)
 		lsp_mappings.n["<leader>lI"] = { "<cmd>NullLsInfo<cr>", desc = "Null-ls information" }
 	end
 
-	if client.supports_method("textDocument/codeAction") then
+	if isJava or client.supports_method("textDocument/codeAction") then
 		lsp_mappings.n["<leader>la"] = {
 			function()
 				vim.lsp.buf.code_action()
@@ -1380,7 +1382,7 @@ function M.lsp_mappings(client, bufnr)
 		lsp_mappings.v["<leader>la"] = lsp_mappings.n["<leader>la"]
 	end
 
-	if client.supports_method("textDocument/codeLens") then
+	if isJava or client.supports_method("textDocument/codeLens") then
 		utils.add_autocmds("lsp_codelens_refresh", bufnr, {
 			events = { "InsertLeave", "BufEnter" },
 			desc = "Refresh codelens",
@@ -1412,7 +1414,7 @@ function M.lsp_mappings(client, bufnr)
 		desc = "LSP refresh",
 	}
 
-	if client.supports_method("textDocument/declaration") then
+	if isJava or client.supports_method("textDocument/declaration") then
 		lsp_mappings.n["gD"] = {
 			function()
 				vim.lsp.buf.declaration()
@@ -1421,7 +1423,7 @@ function M.lsp_mappings(client, bufnr)
 		}
 	end
 
-	if client.supports_method("textDocument/definition") then
+	if isJava or client.supports_method("textDocument/definition") then
 		lsp_mappings.n["gd"] = {
 			function()
 				vim.lsp.buf.definition()
@@ -1431,7 +1433,11 @@ function M.lsp_mappings(client, bufnr)
 	end
 
 	local formatting = require("core.utils.lsp").formatting
-	if client.supports_method("textDocument/formatting") and not vim.tbl_contains(formatting.disabled, client.name) then
+	if
+		isJava
+		or client.supports_method("textDocument/formatting")
+			and not vim.tbl_contains(formatting.disabled, client.name)
+	then
 		lsp_mappings.n["<leader>lf"] = {
 			function()
 				vim.lsp.buf.format(M.format_opts)
@@ -1488,7 +1494,7 @@ function M.lsp_mappings(client, bufnr)
 		end
 	end
 
-	if client.supports_method("textDocument/documentHighlight") then
+	if isJava or client.supports_method("textDocument/documentHighlight") then
 		utils.add_autocmds("lsp_document_highlight", bufnr, {
 			{
 				events = { "CursorHold", "CursorHoldI" },
@@ -1511,7 +1517,7 @@ function M.lsp_mappings(client, bufnr)
 		})
 	end
 
-	if client.supports_method("textDocument/hover") then
+	if isJava or client.supports_method("textDocument/hover") then
 		lsp_mappings.n["<leader>lh"] = {
 			function()
 				vim.lsp.buf.hover()
@@ -1528,7 +1534,7 @@ function M.lsp_mappings(client, bufnr)
 
 	-- Specialized version of hover for functions.
 	-- Hides the returned object, but it highlights the parameters.
-	if client.supports_method("textDocument/signatureHelp") then
+	if isJava or client.supports_method("textDocument/signatureHelp") then
 		lsp_mappings.n["<leader>lH"] = {
 			function()
 				vim.lsp.buf.signature_help()
@@ -1543,7 +1549,7 @@ function M.lsp_mappings(client, bufnr)
 		}
 	end
 
-	if client.supports_method("textDocument/hover") then
+	if isJava or client.supports_method("textDocument/hover") then
 		lsp_mappings.n["<leader>lm"] = {
 			function()
 				vim.api.nvim_feedkeys("K", "n", false)
@@ -1558,7 +1564,7 @@ function M.lsp_mappings(client, bufnr)
 		}
 	end
 
-	if client.supports_method("textDocument/implementation") then
+	if isJava or client.supports_method("textDocument/implementation") then
 		lsp_mappings.n["gI"] = {
 			function()
 				vim.lsp.buf.implementation()
@@ -1567,7 +1573,7 @@ function M.lsp_mappings(client, bufnr)
 		}
 	end
 
-	if client.supports_method("textDocument/inlayHint") then
+	if isJava or client.supports_method("textDocument/inlayHint") then
 		if vim.b.inlay_hints_enabled == nil then
 			vim.b.inlay_hints_enabled = vim.g.inlay_hints_enabled
 		end
@@ -1585,7 +1591,7 @@ function M.lsp_mappings(client, bufnr)
 		end
 	end
 
-	if client.supports_method("textDocument/references") then
+	if isJava or client.supports_method("textDocument/references") then
 		lsp_mappings.n["<leader>lR"] = {
 			function()
 				vim.lsp.buf.references()
@@ -1600,7 +1606,7 @@ function M.lsp_mappings(client, bufnr)
 		}
 	end
 
-	if client.supports_method("textDocument/rename") then
+	if isJava or client.supports_method("textDocument/rename") then
 		lsp_mappings.n["<leader>lr"] = {
 			function()
 				vim.lsp.buf.rename()
@@ -1609,7 +1615,7 @@ function M.lsp_mappings(client, bufnr)
 		}
 	end
 
-	if client.supports_method("textDocument/typeDefinition") then
+	if isJava or client.supports_method("textDocument/typeDefinition") then
 		lsp_mappings.n["gT"] = {
 			function()
 				vim.lsp.buf.type_definition()
@@ -1618,7 +1624,7 @@ function M.lsp_mappings(client, bufnr)
 		}
 	end
 
-	if client.supports_method("workspace/symbol") then
+	if isJava or client.supports_method("workspace/symbol") then
 		lsp_mappings.n["<leader>lS"] = {
 			function()
 				vim.lsp.buf.workspace_symbol()
@@ -1633,7 +1639,7 @@ function M.lsp_mappings(client, bufnr)
 		}
 	end
 
-	if client.supports_method("textDocument/semanticTokens/full") and vim.lsp.semantic_tokens then
+	if isJava or client.supports_method("textDocument/semanticTokens/full") and vim.lsp.semantic_tokens then
 		if vim.g.semantic_tokens_enabled then
 			vim.b[bufnr].semantic_tokens_enabled = true
 			lsp_mappings.n["<leader>uY"] = {
