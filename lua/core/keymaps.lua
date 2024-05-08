@@ -733,7 +733,7 @@ if is_available("telescope.nvim") then
 		end,
 		desc = "Themes",
 	}
-	maps.n["<leader>sf"] = {
+	maps.n["<leader>sF"] = {
 		function()
 			require("telescope.builtin").live_grep({
 				additional_args = function(args)
@@ -743,7 +743,7 @@ if is_available("telescope.nvim") then
 		end,
 		desc = "Words in project",
 	}
-	maps.n["<leader>sF"] = {
+	maps.n["<leader>sf"] = {
 		function()
 			require("telescope.builtin").live_grep()
 		end,
